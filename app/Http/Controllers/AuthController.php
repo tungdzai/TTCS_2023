@@ -37,7 +37,7 @@ class AuthController extends Controller
         $request->validate($rules, $messages);
         $credentials = $request->only('email', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
-            dd(1);
+            dd("Đã pass qua");
         }
     }
 
