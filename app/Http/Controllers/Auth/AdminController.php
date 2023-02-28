@@ -25,7 +25,7 @@ class AdminController extends Controller
     }
 
     /* Check authentication of infomation admin provided to sign in
-        * @param Request
+        * @param Request $request
         * @return View
         * */
     public function postLogin(Request $request)
@@ -33,9 +33,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-            $user = Auth::guard('admin')->user();
-            Auth::guard("admin")->login($user);
-            dd('pass qua ');
+            return redirect()->route();
         }
         return redirect()->back()->with("error", "Đăng nhập không thành công !");
     }

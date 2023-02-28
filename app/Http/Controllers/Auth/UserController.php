@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     /* Check authentication of infomation user provided to sign in
-     * @param Request
+     *  @param Request $request
      * @return View
      * */
     public function postLogin(Request $request)
@@ -32,11 +32,14 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
             $request->session()->regenerate();
-            dd('pass qua');
+            return redirect()->route();
         }
         return redirect()->back()->with("error", "Đăng nhập không thành công !");
     }
 
+    /*
+     * @return View
+     * */
     public function getRegister()
     {
         return view('auth.user.register');
