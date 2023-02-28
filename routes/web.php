@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,21 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Route auth
-Route::prefix('auth/admin')->name('auth.')->group(function () {
-    Route::get('/login', [AuthController::class, 'getLogin'])->name('getLogin');
-    Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
-    Route::get('/register', [AuthController::class, 'getRegister'])->name('getRegister');
-    Route::post('/register', [AuthController::class, 'postRegister'])->name('postRegister');
-    Route::get('/logout', [AuthController::class, 'logouts']);
+//test view
+Route::get('/home', function () {
+    return view('admin.users');
+});
+
+// Route admin
+Route::prefix('auth/admin')->name('auth.')->group(function (){
+   Route::get('',[AdminController::class,'getLogin'])->name("getLogin") ;
+   Route::post('',[AdminController::class,'postLogin'])->name("postLogin") ;
+});
+// Route user
+Route::prefix('/')->name('user.')->group(function (){
+    Route::get('',[UserController::class,'getLogin'])->name("getLogin") ;
+    Route::post('',[UserController::class,'postLogin'])->name("postLogin") ;
+    Route::get('/register',[UserController::class,'getRegister'])->name("getRegister") ;
+
+
 });
