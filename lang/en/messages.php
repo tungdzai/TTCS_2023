@@ -13,5 +13,6 @@ return [
     'success'=>[
         'addUser'=>"Thêm mới thành công",
         'successUpdate'=>'Update thành công ',
+        'deleteUser'=>'Xóa thành công'
     ]
 ];

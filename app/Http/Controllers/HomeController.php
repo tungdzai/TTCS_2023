@@ -143,7 +143,12 @@ class HomeController extends Controller
             return redirect()->route('admin.getEdit')->with('errorUpdate', __('messages.success.addUser'));
         }
     }
-    public function delete(Request $request){
-
+    public function deleteUser(Request $request){
+        $id=$request->get('id');
+        $model= new Users();
+        $status=$model->deleteUser($id);
+        if ($status){
+            return redirect()->route("admin.home")->with("successDelete",__('messages.success.deleteUser'));
+        }
     }
 }

@@ -32,6 +32,7 @@ Route::prefix("/admin")->middleware("auth:admin")->name("admin.")->group(functio
    Route::post('/add',[HomeController::class,'postAdd'])->name("postUser");
    Route::get('/edit',[HomeController::class,'getEdit'])->name('getEdit');
    Route::post('/edit',[HomeController::class,'postEdit'])->name('postEdit');
+   Route::get('/delete',[HomeController::class,'deleteUser'])->name('deleteUser');
 });
 // Route user
 Route::prefix('/')->name('user.')->group(function (){

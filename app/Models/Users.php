@@ -25,10 +25,19 @@ class Users extends Authenticatable
     {
         return DB::table($this->table)->insert($data);
     }
-    public function getUser($id){
-       return DB::table($this->table)->select('user_name', 'email','first_name','last_name','birthday')->where("id", $id)->first();
+
+    public function getUser($id)
+    {
+        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday')->where("id", $id)->first();
     }
-    public function updateUser($data,$id){
+
+    public function updateUser($data, $id)
+    {
         return DB::table($this->table)->where("id", $id)->update($data);
+    }
+
+    public function deleteUser($id)
+    {
+        return  DB::table($this->table)->delete($id);
     }
 }

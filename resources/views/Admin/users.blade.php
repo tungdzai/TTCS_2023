@@ -12,6 +12,8 @@
             <div class="alert alert-danger">{{session('errorAdd')}}</div>
         @elseif(session('successUpdate'))
             <div class="alert alert-success">{{session('successUpdate')}}</div>
+        @elseif(session('successDelete'))
+            <div class="alert alert-success">{{session('successDelete')}}</div>
         @endif
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             <table class="table">
@@ -42,7 +44,7 @@
                             <a href="{{route('admin.getEdit',['id'=>$user->id])}}"><i class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
-                            <a href=""><i class="fas fa-user-times"></i></a>
+                            <a href="{{route('admin.deleteUser',['id'=>$user->id])}}"><i class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach
