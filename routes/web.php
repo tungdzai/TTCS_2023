@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AdminController;
-use App\Http\Controllers\Auth\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ Route::get('/home', function () {
 Route::prefix('auth/admin')->name('auth.')->group(function (){
    Route::get('',[AdminController::class,'getLogin'])->name("getLogin") ;
    Route::post('',[AdminController::class,'postLogin'])->name("postLogin") ;
+});
+Route::prefix("/admin")->middleware("auth:admin")->name("admin.")->group(function (){
+   Route::get('/home',[HomeController::class,'index'])->name('home');
+   Route::get('/add',[HomeController::class,'getAdd'])->name('addUser');
+   Route::post('/add',[HomeController::class,'postAdd'])->name("postUser");
 });
 // Route user
 Route::prefix('/')->name('user.')->group(function (){
