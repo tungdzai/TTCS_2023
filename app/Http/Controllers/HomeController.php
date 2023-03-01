@@ -25,6 +25,10 @@ class HomeController extends Controller
         return view('admin.add');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postAdd(Request $request)
     {
         $rules = [
@@ -74,6 +78,10 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
     public function getEdit(Request $request)
     {
         $id = $request->get('id');
@@ -87,6 +95,10 @@ class HomeController extends Controller
         return redirect()->route('admin.home');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postEdit(Request $request)
     {
         $rules = [
@@ -130,7 +142,8 @@ class HomeController extends Controller
         } else {
             return redirect()->route('admin.getEdit')->with('errorUpdate', __('messages.success.addUser'));
         }
-
+    }
+    public function delete(Request $request){
 
     }
 }
