@@ -34,7 +34,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect()->route("home");
         }
-        return redirect()->back()->with("error", "Đăng nhập không thành công !");
+        return redirect()->back()->with("error",__('messages.errors.login'));
     }
 
     /**
