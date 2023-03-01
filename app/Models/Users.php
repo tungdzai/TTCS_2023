@@ -18,6 +18,17 @@ class Users extends Authenticatable
      */
     public function paginateUser()
     {
-         return DB::table($this->table)->paginate(15);
+        return DB::table($this->table)->paginate(15);
+    }
+
+    public function addUser($data)
+    {
+        return DB::table($this->table)->insert($data);
+    }
+    public function getUser($id){
+       return DB::table($this->table)->select('user_name', 'email','first_name','last_name','birthday')->where("id", $id)->first();
+    }
+    public function updateUser($data,$id){
+        return DB::table($this->table)->where("id", $id)->update($data);
     }
 }

@@ -25,10 +25,13 @@ Route::prefix('auth/admin')->name('auth.')->group(function (){
    Route::get('',[AdminController::class,'getLogin'])->name("getLogin") ;
    Route::post('',[AdminController::class,'postLogin'])->name("postLogin") ;
 });
+
 Route::prefix("/admin")->middleware("auth:admin")->name("admin.")->group(function (){
    Route::get('/home',[HomeController::class,'index'])->name('home');
    Route::get('/add',[HomeController::class,'getAdd'])->name('addUser');
    Route::post('/add',[HomeController::class,'postAdd'])->name("postUser");
+   Route::get('/edit',[HomeController::class,'getEdit'])->name('getEdit');
+   Route::post('/edit',[HomeController::class,'postEdit'])->name('postEdit');
 });
 // Route user
 Route::prefix('/')->name('user.')->group(function (){
