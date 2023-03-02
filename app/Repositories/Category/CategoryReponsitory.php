@@ -29,4 +29,41 @@ class CategoryReponsitory implements CategoryRepositoryInterface{
     {
         return DB::table($this->table)->insert($data);
     }
+
+    /** show category by id
+     * @param $id
+     * @return Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    public function getCategory($id)
+    {
+        return DB::table($this->table)->select('name','parent_id')->where("id", $id)->first();
+    }
+
+    /** update category
+     * @param $data
+     * @param $id
+     * @return int
+     */
+    public function updateCategory($data, $id)
+    {
+        return DB::table($this->table)->where("id", $id)->update($data);
+    }
+
+    /** delete category
+     * @param $id
+     * @return int
+     */
+    public function deleteCategory($id)
+    {
+        return DB::table($this->table)->delete($id);
+    }
+
+    /** get category by parent_id
+     * @param $parent_id
+     * @return Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    public function getParent($parent_id)
+    {
+        return DB::table($this->table)->select('*')->where("id", $parent_id)->first();
+    }
 }

@@ -9,11 +9,15 @@
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             @if(session('successAdd'))
                 <div class="alert alert-success">{{session('successAdd')}}</div>
+            @elseif(session('successUpdate'))
+                <div class="alert alert-success">{{session('successUpdate')}}</div>
+            @elseif(session('successDelete'))
+                <div class="alert alert-success">{{session('successDelete')}}</div>
             @endif
             <table class="table">
                 <thead>
                 <tr class="text-center">
-                    <th scope="col">STT</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">parent_id</th>
                     <th></th>
@@ -22,15 +26,15 @@
                 </thead>
                 <tbody>
                 @foreach($categories as $index =>$category)
-                    <tr class="text-left ">
-                        <td class="text-center ">{{$index+1}}</td>
+                    <tr class=" text-center">
+                        <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
                         <td>{{$category->parent_id}}</td>
                         <td>
-                            <a href="#"><i class="fas fa-user-edit"></i></a>
+                            <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
-                            <a href="#"><i class="fas fa-user-times"></i></a>
+                            <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach

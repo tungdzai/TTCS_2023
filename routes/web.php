@@ -47,5 +47,8 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
     Route::get('/category',[CategoriesController::class,'index'])->name('category');
     Route::get('/add-category',[CategoriesController::class,'addCategory'])->name('addCategory');
     Route::post('/add-category',[CategoriesController::class,'handleAddCategory'])->name('handleAddCategory');
+    Route::get('/edit-category',[CategoriesController::class,'getEditCategory'])->name('getEditCategory');
+    Route::post('/edit-category',[CategoriesController::class,'handleEditCategory'])->name('handleEditCategory');
+    Route::get('/delete',[CategoriesController::class,'deleteCategory'])->name('deleteCategory');
 });
 
