@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('reset_password');
             $table->string('status');
             $table->tinyInteger("flag_delete")->default(0);
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

@@ -6,10 +6,19 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <a href="{{route('admin.addUser')}}" class="btn btn-primary">Thêm User</a>
-        <div class="d-sm-flex align-items-center justify-content-between mb-4 py-2">
+        @if(session('successAdd'))
+            <div class="alert alert-success">{{session('successAdd')}}</div>
+        @elseif(session('errorAdd'))
+            <div class="alert alert-danger">{{session('errorAdd')}}</div>
+        @elseif(session('successUpdate'))
+            <div class="alert alert-success">{{session('successUpdate')}}</div>
+        @elseif(session('successDelete'))
+            <div class="alert alert-success">{{session('successDelete')}}</div>
+        @endif
+        <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             <table class="table">
                 <thead>
-                <tr  class="text-center">
+                <tr class="text-center">
                     <th scope="col">STT</th>
                     <th scope="col">User</th>
                     <th scope="col">First Name</th>
@@ -23,19 +32,19 @@
                 </thead>
                 <tbody>
                 @foreach($users as $index => $user)
-                    <tr class="text-center">
+                    <tr class="text-left ">
                         <td>{{$index+1}}</td>
                         <td>{{$user->user_name}}</td>
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->birthday}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->flag_delete}}</td>
+                        <td class="text-center">{{$user->flag_delete}}</td>
                         <td>
-                            <a href="" ><i class="fas fa-user-edit"></i></a>
+                            <a href="{{route('admin.getEdit',['id'=>$user->id])}}"><i class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
-                            <a href="" ><i class="fas fa-user-times"></i></a>
+                            <a href="{{route('admin.deleteUser',['id'=>$user->id])}}"><i class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach
