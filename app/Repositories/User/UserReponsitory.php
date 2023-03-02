@@ -12,7 +12,8 @@ class UserReponsitory implements UserReponsitoryInterface
 
     /**handle paginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */    public function paginateUser(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginateUser(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return DB::table($this->table)->paginate(15);
     }
@@ -32,7 +33,7 @@ class UserReponsitory implements UserReponsitoryInterface
      */
     public function getUser($id)
     {
-        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday','avatar')->where("id", $id)->first();
+        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday', 'avatar')->where("id", $id)->first();
     }
 
     /**Handle updateUser

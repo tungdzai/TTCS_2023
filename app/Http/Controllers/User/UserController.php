@@ -32,7 +32,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route("home");
+            return redirect()->route("user.category");
         }
         return redirect()->back()->with("error",__('messages.errors.login'));
     }

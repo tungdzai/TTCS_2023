@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\User\Categories\CategoriesController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +41,11 @@ Route::prefix('/')->name('user.')->group(function (){
     Route::get('',[UserController::class,'getLogin'])->name("getLogin") ;
     Route::post('',[UserController::class,'postLogin'])->name("postLogin") ;
     Route::get('/register',[UserController::class,'getRegister'])->name("getRegister") ;
+});
+
+Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (){
+    Route::get('/category',[CategoriesController::class,'index'])->name('category');
+    Route::get('/add-category',[CategoriesController::class,'addCategory'])->name('addCategory');
+    Route::post('/add-category',[CategoriesController::class,'handleAddCategory'])->name('handleAddCategory');
 });
 
