@@ -26,7 +26,6 @@
                     <th scope="col">Birthday</th>
                     <th scope="col">Email</th>
                     <th scope="col">Flag Delete</th>
-                    <th scope="col">Avatar</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -41,7 +40,6 @@
                         <td>{{$user->birthday}}</td>
                         <td>{{$user->email}}</td>
                         <td class="text-center">{{$user->flag_delete}}</td>
-                        <td class="text-center">1</td>
                         <td>
                             <a href="{{route('admin.getEdit',['id'=>$user->id])}}"><i class="fas fa-user-edit"></i></a>
                         </td>

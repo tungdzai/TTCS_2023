@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use  App\Http\Requests\home\PostRequest;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PostRequest;
 use App\Repositories\User\UserReponsitoryInterface;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     protected $userRepository;
+
     public function __construct(UserReponsitoryInterface $userRepository)
     {
-        $this->userRepository =$userRepository;
+        $this->userRepository = $userRepository;
     }
 
     /** paginateUser
@@ -38,6 +41,12 @@ class HomeController extends Controller
      */
     public function postAdd(PostRequest $request)
     {
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('upload/user/avatar'), $file_name);
+            $pathAvatar = 'upload/user/avtar' . $file_name;
+        }
         $dataUser = [
             'email' => $request->email,
             'user_name' => $request->user,
@@ -47,6 +56,7 @@ class HomeController extends Controller
             'password' => bcrypt('1'),
             'reset_password' => bcrypt('1'),
             'status' => "active",
+            'avatar' =>$pathAvatar,
             'flag_delete' => 0,
             'created_at' => date(now('Asia/Ho_Chi_Minh')),
         ];
@@ -80,6 +90,12 @@ class HomeController extends Controller
      */
     public function postEdit(PostRequest $request)
     {
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('upload/user/avatar'), $file_name);
+            $pathAvatar = 'upload/user/avtar' . $file_name;
+        }
         $id = session('id');
         $dataUpdate = [
             'email' => $request->email,
@@ -87,6 +103,7 @@ class HomeController extends Controller
             'birthday' => $request->birthday,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'avatar' =>$pathAvatar,
             'updated_at' => date(now('Asia/Ho_Chi_Minh')),
         ];
         $status = $this->userRepository->updateUser($dataUpdate, $id);

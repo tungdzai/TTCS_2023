@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-sm" style="margin: 0 auto;width: 50%" >
         <!-- Page Heading -->
-        <form action="{{route('admin.postUser')}}" method="post">
+        <form action="{{route('admin.postUser')}}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">User</label>
                 <input type="text" class="form-control" name="user" value="{{old('user')}}">
@@ -41,8 +41,15 @@
                 <span style="color: red">{{$message}}</span>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label for="avatar">Avatar</label>
+                <input type="file" name="avatar" class="form-control-file " id="avatar"  onchange="previewImage()">
+                <img id="preview" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             @csrf
         </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
+    <script src="../../admin_lte/js/previewAvatar.js"></script>
 @endsection

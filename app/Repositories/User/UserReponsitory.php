@@ -12,8 +12,7 @@ class UserReponsitory implements UserReponsitoryInterface
 
     /**handle paginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function paginateUser(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */    public function paginateUser(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return DB::table($this->table)->paginate(15);
     }

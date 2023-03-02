@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\home;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,6 +27,7 @@ class PostRequest extends FormRequest
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'birthday' => 'required|date|before:-18 years',
+            'avatar' => 'required|file|mimes:jpeg,png|max:3072',
         ];
     }
 
@@ -52,6 +53,11 @@ class PostRequest extends FormRequest
 
             'birthday.required' => __('messages.messages.required'),
             'birthday.before' => ":attribute phải lớn hơn 18 ! ",
+
+            'avatar.required'=>__('messages.messages.required'),
+            'avatar.image'=>__('messages.messages.format'),
+            'avatar.mimes'=>__('messages.messages.image'),
+            'avatar.max'=>':attribute max 3MB ',
         ];
     }
 

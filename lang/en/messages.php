@@ -16,12 +16,15 @@ return [
         'max' => ':attribute tối đa :max kí tự ! ',
         'unique' => ':attribute đã tồn tại trên hệ thống !',
         'format'=>':attribute chưa đúng định dạng!',
+        'image'=>':attribute là file png , jpg ,jpeg !'
+
     ],
     'attributes' => [
         'user' => 'User',
         'email' => "Email",
         'first_name' => "First Name",
         'last_name' => "Last Name",
-        'birthday' => "Birthday"
+        'birthday' => "Birthday",
+        'avatar'=>'Avatar'
     ],
 ];
