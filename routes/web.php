@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\User\UserController;
-use App\Http\Controllers\UserAvatarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +34,7 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
    Route::post('/edit',[HomeController::class,'postEdit'])->name('postEdit');
    Route::get('/delete',[HomeController::class,'deleteUser'])->name('deleteUser');
 });
+
 // Route user
 Route::prefix('/')->name('user.')->group(function (){
     Route::get('',[UserController::class,'getLogin'])->name("getLogin") ;
@@ -42,6 +42,3 @@ Route::prefix('/')->name('user.')->group(function (){
     Route::get('/register',[UserController::class,'getRegister'])->name("getRegister") ;
 });
 
-// Upload avatar
-Route::get('/uploadAvatar',[UserAvatarController::class,'index']);
-Route::post('/uploadAvatar',[UserAvatarController::class,'uploadAvatar'])->name("uploadAvatar");

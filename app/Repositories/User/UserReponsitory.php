@@ -32,7 +32,7 @@ class UserReponsitory implements UserReponsitoryInterface
      */
     public function getUser($id)
     {
-        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday')->where("id", $id)->first();
+        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday','avatar')->where("id", $id)->first();
     }
 
     /**Handle updateUser
