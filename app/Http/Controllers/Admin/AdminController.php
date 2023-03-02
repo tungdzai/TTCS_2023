@@ -16,7 +16,7 @@ class AdminController extends Controller
         $this->model = new admin();
     }
 
-    /**
+    /** View Login
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getLogin()
@@ -24,7 +24,7 @@ class AdminController extends Controller
         return view('auth.admin.login');
     }
 
-    /** Kiểm tra login
+    /** handle login
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */

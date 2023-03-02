@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     }
 
-    /** get View add
+    /**  View adUser
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getAdd()
@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('admin.add');
     }
 
-    /** handle add
+    /** handle addUser
      * @param PostRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -58,7 +58,7 @@ class HomeController extends Controller
         }
     }
 
-    /**
+    /** View editUser and show DB User($id)
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
@@ -74,7 +74,7 @@ class HomeController extends Controller
         return redirect()->route('admin.home');
     }
 
-    /**
+    /** handle EditUser
      * @param PostRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -97,7 +97,7 @@ class HomeController extends Controller
         }
     }
 
-    /**
+    /** delete User
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|void
      */

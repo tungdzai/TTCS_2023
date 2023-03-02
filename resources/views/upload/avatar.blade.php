@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="container-fluid">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('uploadAvatar')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="avatar">Avatar</label>
@@ -15,15 +15,5 @@
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
-    <script>
-        function previewImage() {
-            var file = document.getElementById("avatar").files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#preview").attr("src", e.target.result);
-                $("#preview").show();
-            }
-            reader.readAsDataURL(file);
-        }
-    </script>
+    <script src="../admin_lte/js/previewAvatar.js"></script>
 @endsection

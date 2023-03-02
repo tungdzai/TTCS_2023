@@ -44,3 +44,4 @@ Route::prefix('/')->name('user.')->group(function (){
 
 // Upload avatar
 Route::get('/uploadAvatar',[UserAvatarController::class,'index']);
+Route::post('/uploadAvatar',[UserAvatarController::class,'uploadAvatar'])->name("uploadAvatar");

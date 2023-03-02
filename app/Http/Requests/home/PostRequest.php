@@ -30,6 +30,9 @@ class PostRequest extends FormRequest
         ];
     }
 
+    /** Error notification when occurring
+     * @return array
+     */
     public function messages(): array
     {
         return [
@@ -52,6 +55,9 @@ class PostRequest extends FormRequest
         ];
     }
 
+    /** Get attributes
+     * @return array
+     */
     public function attributes(): array
     {
         return __('messages.attributes');

@@ -15,7 +15,7 @@ class UserController extends Controller
         $this->model = new Users();
     }
 
-    /**
+    /** View Login User
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getLogin()
@@ -23,7 +23,7 @@ class UserController extends Controller
         return view('auth.user.login');
     }
 
-    /** ktra login
+    /** Handle loginUser
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -37,7 +37,7 @@ class UserController extends Controller
         return redirect()->back()->with("error",__('messages.errors.login'));
     }
 
-    /**
+    /** View Register
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getRegister()
