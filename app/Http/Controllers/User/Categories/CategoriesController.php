@@ -80,12 +80,9 @@ class CategoriesController extends Controller
                 }
                 $data['categories'] = $categories;
                 $data['getCategory'] = $getCategory;
-                if (!empty($getCategory)) {
-                    $request->session()->put('id', $id);
-                    return view('user.Categories.editCategory', $data);
-                }
+                $request->session()->put('id', $id);
+                return view('user.Categories.editCategory', $data);
             }
-            return redirect()->route('user.category');
         }
         return redirect()->route('user.category');
     }

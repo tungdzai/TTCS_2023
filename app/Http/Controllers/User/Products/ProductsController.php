@@ -81,11 +81,8 @@ class ProductsController extends Controller
             if (Products::where('id', $id)->exists()) {
                 $data['getProduct'] = $this->productRepository->getProduct($id);
                 $data['categories'] = $this->categoryRepository->getAll();
-                if (!empty($data['getProduct'])) {
-                    $request->session()->put('id', $id);
-                    return view('user.Products.editProduct', $data);
-                }
-                return redirect()->route('user.product');
+                $request->session()->put('id', $id);
+                return view('user.Products.editProduct', $data);
             }
         }
         return redirect()->route('user.product');
