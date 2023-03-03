@@ -49,7 +49,7 @@
                         <td>{{$product->category_id}}</td>
                         <td>{{$product->expired_at}}</td>
                         <td>
-                            <a href="#"><i
+                            <a href="{{route('user.getEditProduct',['id'=>$product->id])}}"><i
                                     class="fas fa-user-edit"></i></a>
                         </td>
                         <td>

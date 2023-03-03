@@ -11,12 +11,12 @@ use App\Repositories\Category\CategoryRepositoryInterface;
 
 class ProductsController extends Controller
 {
-    protected $productRepository,$categoryRepository;
+    protected $productRepository, $categoryRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository,CategoryRepositoryInterface $categoryRepository)
+    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository)
     {
         $this->productRepository = $productRepository;
-        $this->categoryRepository=$categoryRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /** get view list products
@@ -34,9 +34,9 @@ class ProductsController extends Controller
      */
     public function addProduct()
     {
-        $category=$this->categoryRepository->getAll();
-        $data['categories']=$category;
-        return view("user.Products.addProduct",$data);
+        $category = $this->categoryRepository->getAll();
+        $data['categories'] = $category;
+        return view("user.Products.addProduct", $data);
     }
 
     /** handle add product
@@ -51,13 +51,13 @@ class ProductsController extends Controller
             $file->move(public_path('upload/user/avatar'), $file_name);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
-        $dataProduct= [
+        $dataProduct = [
             'name' => $request->name,
             'stock' => $request->stock,
             'sku' => $request->sku,
             'expired_at' => $request->expired_at,
             'category_id' => $request->category_id,
-            'avatar' =>$pathAvatar,
+            'avatar' => $pathAvatar,
             'flag_delete' => 0,
             'created_at' => date(now('Asia/Ho_Chi_Minh')),
         ];
@@ -67,6 +67,11 @@ class ProductsController extends Controller
         } else {
             return redirect()->route('user.addProduct')->with('errorAdd', __('messages.success.addUser'));
         }
+    }
+
+    public function getEditProduct()
+    {
+        return view('user.Products.editProduct');
 
     }
 }

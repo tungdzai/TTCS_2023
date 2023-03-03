@@ -32,8 +32,8 @@
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Parent ID</label>
                 <select name="parent_id" class="form-control">
-                    <option value="{{!empty($parent->id)?$parent->id:null}}">{{!empty($parent->name)?$parent->name:null}}</option>
-                    <option value="null"></option>
+                    <option value="{{!empty($category_parent->id)?$category_parent->id:null}}">{{!empty($category_parent->name)?$category_parent->name:null}}</option>
+                    <option></option>
                     @foreach($categories as $category)
                         @if($category->parent_id == null)
                             <option value="{{$category->id}}">{{$category->name}}</option>

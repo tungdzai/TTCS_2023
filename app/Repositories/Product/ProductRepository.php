@@ -1,22 +1,21 @@
 <?php
 namespace App\Repositories\Product;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use App\Models\Products;
 class ProductRepository implements ProductRepositoryInterface{
-    public $table = 'product';
     /**handle paginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginateProduct()
     {
-        return DB::table($this->table)->paginate(15);
+        return Products::paginate(15);
     }
     /** get all data products
      * @return \Illuminate\Support\Collection
      */
     public function getAll()
     {
-        return DB::table($this->table)->get();
+        return Products::all();
     }
     /** add product
      * @param $data
@@ -24,7 +23,7 @@ class ProductRepository implements ProductRepositoryInterface{
      */
     public function addProduct($data)
     {
-        return DB::table($this->table)->insert($data);
+        return Products::create($data);
     }
 
     /** show product by id

@@ -61,13 +61,21 @@ class CategoriesController extends Controller
      */
     public function getEditCategory(Request $request)
     {
-        $model = $this->categoryRepository->getAll();
         $id = $request->get('id');
+        $categories = $this->categoryRepository->getAll();
         $getCategory = $this->categoryRepository->getCategory($id);
-        $parent_id = $getCategory->parent_id;
-        $parent = $this->categoryRepository->getParent($parent_id);
-        $data['parent'] = $parent;
-        $data['categories'] = $model;
+        $category_parent=[];
+        if (!empty($getCategory->parent_id)){
+            foreach ($categories as  $category) {
+                if ($category->id == $getCategory->parent_id){
+                    $category_parent= $category;
+                }
+            }
+        }
+        if (!empty($category_parent)){
+            $data['category_parent']=$category_parent;
+        }
+        $data['categories'] = $categories;
         $data['getCategory'] = $getCategory;
         if (!empty($getCategory)) {
             $request->session()->put('id', $id);

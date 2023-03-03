@@ -26,8 +26,8 @@ class ProductRequest extends FormRequest
             'stock' => 'required|integer|min:0|max:10000',
             'expired_at' =>  'nullable|date|after:now',
             'avatar' => 'required|file|mimes:jpeg,png|max:3072',
-            'sku' => 'required|unique:product|alpha_num|min:10|max:20',
-            'category_id' => 'required|exists:product,id',
+            'sku' => 'required|unique:products|alpha_num|min:10|max:20',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
     /** Error notification when occurring
