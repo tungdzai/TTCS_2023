@@ -60,5 +60,6 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
     Route::get('/add-product',[ProductsController::class,'addProduct'])->name("addProduct");
     Route::post('/add-product',[ProductsController::class,'handleAddProduct'])->name("handleAddProduct");
     Route::get('/edit-product',[ProductsController::class,'getEditProduct'])->name("getEditProduct");
+    Route::post('/edit-product',[ProductsController::class,'handleEditProduct'])->name("handleEditProduct");
 });
 

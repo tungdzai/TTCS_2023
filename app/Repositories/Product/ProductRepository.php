@@ -32,7 +32,7 @@ class ProductRepository implements ProductRepositoryInterface{
      */
     public function getProduct($id)
     {
-        // TODO: Implement getProduct() method.
+        return Products::select('name','stock','sku','expired_at','category_id','avatar')->where("id", $id)->first();
     }
     /** update product
      * @param $data
@@ -41,7 +41,7 @@ class ProductRepository implements ProductRepositoryInterface{
      */
     public function updateProduct($data, $id)
     {
-        // TODO: Implement updateProduct() method.
+        return Products::where("id", $id)->update($data);
     }
     /** delete product
      * @param $id
