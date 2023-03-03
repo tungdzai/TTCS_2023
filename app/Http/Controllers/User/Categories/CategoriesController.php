@@ -63,33 +63,31 @@ class CategoriesController extends Controller
     public function getEditCategory(Request $request)
     {
         $id = $request->get('id');
-
-        if (Categories::where('id', $id)->exists()) {
-            $categories = $this->categoryRepository->getAll();
-            $getCategory = $this->categoryRepository->getCategory($id);
-            $category_parent=[];
-            if (!empty($getCategory->parent_id)){
-                foreach ($categories as  $category) {
-                    if ($category->id == $getCategory->parent_id){
-                        $category_parent= $category;
+        $getCategory = $this->categoryRepository->getCategory($id);
+        if (!empty($getCategory)){
+            if (Categories::where('id', $id)->exists()) {
+                $categories = $this->categoryRepository->getAll();
+                $category_parent=[];
+                if (!empty($getCategory->parent_id)){
+                    foreach ($categories as  $category) {
+                        if ($category->id == $getCategory->parent_id){
+                            $category_parent= $category;
+                        }
                     }
                 }
+                if (!empty($category_parent)){
+                    $data['category_parent']=$category_parent;
+                }
+                $data['categories'] = $categories;
+                $data['getCategory'] = $getCategory;
+                if (!empty($getCategory)) {
+                    $request->session()->put('id', $id);
+                    return view('user.Categories.editCategory', $data);
+                }
             }
-            if (!empty($category_parent)){
-                $data['category_parent']=$category_parent;
-            }
-            $data['categories'] = $categories;
-            $data['getCategory'] = $getCategory;
-            if (!empty($getCategory)) {
-                $request->session()->put('id', $id);
-                return view('user.Categories.editCategory', $data);
-            }
-            return redirect()->route('user.Categories.categories');
-        } else {
-            return redirect()->route('user.Categories.categories');
+            return redirect()->route('user.category');
         }
-
-
+        return redirect()->route('user.category');
     }
 
     /** handle Edit Category

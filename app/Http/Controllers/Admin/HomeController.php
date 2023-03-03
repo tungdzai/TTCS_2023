@@ -76,16 +76,17 @@ class HomeController extends Controller
     public function getEdit(Request $request)
     {
         $id = $request->get('id');
-        if (Users::where('id', $id)->exists()) {
-            $getUser = $this->userRepository->getUser($id);
-            $data['getUser'] = $getUser;
-            if (!empty($getUser)) {
-                $request->session()->put('id', $id);
-                return view('admin.edit', $data);
+        $getUser = $this->userRepository->getUser($id);
+        if (!empty($getUser)){
+            if (Users::where('id', $id)->exists()) {
+                $data['getUser'] = $getUser;
+                if (!empty($getUser)) {
+                    $request->session()->put('id', $id);
+                    return view('admin.edit', $data);
+                }
             }
-        } else {
-            return redirect()->route('admin.home');
         }
+        return redirect()->route('admin.home');
     }
 
     /** handle EditUser

@@ -77,18 +77,18 @@ class ProductsController extends Controller
     public function getEditProduct(Request $request)
     {
         $id = $request->get('id');
-        if (Products::where('id', $id)->exists()) {
-            $data['getProduct'] = $this->productRepository->getProduct($id);;
-            $data['categories'] = $this->categoryRepository->getAll();
-            if (!empty($data['getProduct'])) {
-                $request->session()->put('id', $id);
-                return view('user.Products.editProduct', $data);
+        if (!empty($data['getProduct'] = $this->productRepository->getProduct($id))) {
+            if (Products::where('id', $id)->exists()) {
+                $data['getProduct'] = $this->productRepository->getProduct($id);
+                $data['categories'] = $this->categoryRepository->getAll();
+                if (!empty($data['getProduct'])) {
+                    $request->session()->put('id', $id);
+                    return view('user.Products.editProduct', $data);
+                }
+                return redirect()->route('user.product');
             }
-            return redirect()->route('user.product');
-        } else {
-            return redirect()->route('user.product');
         }
-
+        return redirect()->route('user.product');
     }
 
     public function handleEditProduct(ProductRequest $request)
@@ -101,7 +101,7 @@ class ProductsController extends Controller
             $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
 
-        $updateProduct= [
+        $updateProduct = [
             'name' => $request->name,
             'stock' => $request->stock,
             'sku' => $request->sku,
@@ -117,7 +117,6 @@ class ProductsController extends Controller
         } else {
             return redirect()->route('user.addProduct')->with('errorUpdate', __('messages.errors.updateUser'));
         }
-
 
 
     }

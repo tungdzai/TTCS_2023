@@ -37,6 +37,7 @@
                     <th scope="col">Expired at</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +49,9 @@
                         <td>{{$product->sku}}</td>
                         <td>{{$product->category_id}}</td>
                         <td>{{$product->expired_at}}</td>
+                        <td>
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                        </td>
                         <td>
                             <a href="{{route('user.getEditProduct',['id'=>$product->id])}}"><i
                                     class="fas fa-user-edit"></i></a>
