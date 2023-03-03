@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
+use App\Models\Users;
 use App\Repositories\User\UserReponsitoryInterface;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,7 @@ class HomeController extends Controller
             $file = $request->avatar;
             $file_name = $file->getClientOriginalName();
             $file->move(public_path('upload/user/avatar'), $file_name);
-            $pathAvatar = '/upload/user/avtar/' . $file_name;
+            $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
         $dataUser = [
             'email' => $request->email,
@@ -56,7 +57,7 @@ class HomeController extends Controller
             'password' => bcrypt('1'),
             'reset_password' => bcrypt('1'),
             'status' => "active",
-            'avatar' =>$pathAvatar,
+            'avatar' => $pathAvatar,
             'flag_delete' => 0,
             'created_at' => date(now('Asia/Ho_Chi_Minh')),
         ];
@@ -76,8 +77,8 @@ class HomeController extends Controller
     {
         $id = $request->get('id');
         $getUser = $this->userRepository->getUser($id);
-        $data['getUser'] = $getUser;
         if (!empty($getUser)) {
+            $data['getUser'] = $getUser;
             $request->session()->put('id', $id);
             return view('admin.edit', $data);
         }
@@ -103,7 +104,7 @@ class HomeController extends Controller
             'birthday' => $request->birthday,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'avatar' =>$pathAvatar,
+            'avatar' => $pathAvatar,
             'updated_at' => date(now('Asia/Ho_Chi_Minh')),
         ];
         $status = $this->userRepository->updateUser($dataUpdate, $id);
@@ -121,9 +122,14 @@ class HomeController extends Controller
     public function deleteUser(Request $request)
     {
         $id = $request->get('id');
-        $status = $this->userRepository->deleteUser($id);
-        if ($status) {
-            return redirect()->route("admin.home")->with("successDelete", __('messages.success.deleteUser'));
+        if (Users::where('id', $id)->exists()) {
+            $status = $this->userRepository->deleteUser($id);
+            if ($status) {
+                return redirect()->route("admin.home")->with("successDelete", __('messages.success.deleteUser'));
+            }
+        } else {
+            return redirect()->route('admin.home');
         }
+
     }
 }

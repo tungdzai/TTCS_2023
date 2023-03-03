@@ -2,6 +2,13 @@
 @section("title")
     Admin - Quản lý user
 @endsection
+@section('sidebarTitle')
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('admin.home')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Users</span></a>
+    </li>
+@endsection
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->

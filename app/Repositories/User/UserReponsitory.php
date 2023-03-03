@@ -1,30 +1,27 @@
 <?php
 
 namespace App\Repositories\User;
-
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use App\Models\Users;
 
 class UserReponsitory implements UserReponsitoryInterface
 {
-    public $table = 'users';
 
     /**handle paginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginateUser(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return DB::table($this->table)->paginate(15);
+        return Users::paginate(15);
     }
 
     /**Handle addUser
      * @param $data
      * @return bool
      */
-    public function addUser($data): bool
+    public function addUser($data)
     {
-        return DB::table($this->table)->insert($data);
+        return Users::create($data);
     }
 
     /**Handle getUser
@@ -33,7 +30,7 @@ class UserReponsitory implements UserReponsitoryInterface
      */
     public function getUser($id)
     {
-        return DB::table($this->table)->select('user_name', 'email', 'first_name', 'last_name', 'birthday', 'avatar')->where("id", $id)->first();
+        return Users::select('user_name', 'email', 'first_name', 'last_name', 'birthday', 'avatar')->where("id", $id)->first();
     }
 
     /**Handle updateUser
@@ -43,7 +40,7 @@ class UserReponsitory implements UserReponsitoryInterface
      */
     public function updateUser($data, $id): int
     {
-        return DB::table($this->table)->where("id", $id)->update($data);
+        return Users::where("id", $id)->update($data);
     }
 
     /** Handle Delete User
@@ -52,7 +49,8 @@ class UserReponsitory implements UserReponsitoryInterface
      */
     public function deleteUser($id): int
     {
-        return DB::table($this->table)->delete($id);
+        $user = Users::find($id);
+        return $user->delete();
     }
 
 }
