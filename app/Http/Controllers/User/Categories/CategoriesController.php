@@ -64,25 +64,24 @@ class CategoriesController extends Controller
     {
         $id = $request->get('id');
         $getCategory = $this->categoryRepository->getCategory($id);
-        if (!empty($getCategory)){
-            if (Categories::where('id', $id)->exists()) {
-                $categories = $this->categoryRepository->getAll();
-                $category_parent=[];
-                if (!empty($getCategory->parent_id)){
-                    foreach ($categories as  $category) {
-                        if ($category->id == $getCategory->parent_id){
-                            $category_parent= $category;
-                        }
+        if (!empty($getCategory)) {
+            $categories = $this->categoryRepository->getAll();
+            $category_parent = [];
+            if (!empty($getCategory->parent_id)) {
+                foreach ($categories as $category) {
+                    if ($category->id == $getCategory->parent_id) {
+                        $category_parent = $category;
                     }
                 }
-                if (!empty($category_parent)){
-                    $data['category_parent']=$category_parent;
-                }
-                $data['categories'] = $categories;
-                $data['getCategory'] = $getCategory;
-                $request->session()->put('id', $id);
-                return view('user.Categories.editCategory', $data);
             }
+            if (!empty($category_parent)) {
+                $data['category_parent'] = $category_parent;
+            }
+            $data['categories'] = $categories;
+            $data['getCategory'] = $getCategory;
+            $request->session()->put('id', $id);
+            return view('user.Categories.editCategory', $data);
+
         }
         return redirect()->route('user.category');
     }

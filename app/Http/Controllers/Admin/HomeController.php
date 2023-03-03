@@ -77,14 +77,10 @@ class HomeController extends Controller
     {
         $id = $request->get('id');
         $getUser = $this->userRepository->getUser($id);
-        if (!empty($getUser)){
-            if (Users::where('id', $id)->exists()) {
-                $data['getUser'] = $getUser;
-                if (!empty($getUser)) {
-                    $request->session()->put('id', $id);
-                    return view('admin.edit', $data);
-                }
-            }
+        if (!empty($getUser)) {
+            $data['getUser'] = $getUser;
+            $request->session()->put('id', $id);
+            return view('admin.edit', $data);
         }
         return redirect()->route('admin.home');
     }
