@@ -2,6 +2,13 @@
 @section("title")
     Admin - Update User
 @endsection
+@section('sidebarTitle')
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('admin.home')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Users</span></a>
+    </li>
+@endsection
 @section('content')
     <div class="container-sm" style="margin: 0 auto;width: 50%">
         <!-- Page Heading -->

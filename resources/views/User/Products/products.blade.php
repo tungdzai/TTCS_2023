@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section("title")
-    User- Category
+    User- Product
 @endsection
 @section('sidebarTitle')
     <li class="nav-item active">
@@ -17,7 +17,7 @@
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->
-        <a href="{{route('user.addCategory')}}" class="btn btn-primary">Thêm danh mục</a>
+        <a href="{{route("user.addProduct")}}" class="btn btn-primary">Thêm sản phẩm</a>
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             @if(session('successAdd'))
                 <div class="alert alert-success">{{session('successAdd')}}</div>
@@ -29,30 +29,38 @@
             <table class="table">
                 <thead>
                 <tr class="text-center">
-                    <th scope="col">ID</th>
+                    <th scope="col">STT</th>
                     <th scope="col">Name</th>
-                    <th scope="col">parent_id</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Sku</th>
+                    <th scope="col">Category ID</th>
+                    <th scope="col">Expired at</th>
                     <th></th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $index =>$category)
+                @foreach($products as $index =>$product)
                     <tr class=" text-center">
-                        <td>{{$category->id}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>{{$category->parent_id}}</td>
+                        <td>{{$index+1}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->stock}}</td>
+                        <td>{{$product->sku}}</td>
+                        <td>{{$product->category_id}}</td>
+                        <td>{{$product->expired_at}}</td>
                         <td>
-                            <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i class="fas fa-user-edit"></i></a>
+                            <a href="#"><i
+                                    class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
-                            <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i class="fas fa-user-times"></i></a>
+                            <a href="#"><i
+                                    class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
-        {{$categories->links()}}
+        {{$products->links()}}
     </div>
 @endsection

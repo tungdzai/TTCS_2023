@@ -45,7 +45,7 @@ class HomeController extends Controller
             $file = $request->avatar;
             $file_name = $file->getClientOriginalName();
             $file->move(public_path('upload/user/avatar'), $file_name);
-            $pathAvatar = '/upload/user/avtar/' . $file_name;
+            $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
         $dataUser = [
             'email' => $request->email,

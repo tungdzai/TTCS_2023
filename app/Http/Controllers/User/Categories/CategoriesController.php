@@ -55,6 +55,10 @@ class CategoriesController extends Controller
         return redirect()->route('user.addCategory')->with('errors', __('messages.errors.addUser'));
     }
 
+    /** get view edit Category
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
     public function getEditCategory(Request $request)
     {
         $model = $this->categoryRepository->getAll();
@@ -72,6 +76,10 @@ class CategoriesController extends Controller
         return redirect()->route('user.Categories.categories');
     }
 
+    /** handle Edit Category
+     * @param CategoryRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handleEditCategory(CategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
         $id = session('id');

@@ -16,7 +16,11 @@ return [
         'max' => ':attribute tối đa :max kí tự ! ',
         'unique' => ':attribute đã tồn tại trên hệ thống !',
         'format'=>':attribute chưa đúng định dạng!',
-        'image'=>':attribute là file png , jpg ,jpeg !'
+        'image'=>':attribute là file png , jpg ,jpeg !',
+        'integer'=>':attribute phải là số nguyên !',
+        'date'=>":attribute phải là ngày tháng năm !",
+        'after'=>":attribute phải lớn hơn thời gian hiện tại !",
+        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !"
 
     ],
     'attributes' => [
@@ -26,5 +30,14 @@ return [
         'last_name' => "Last Name",
         'birthday' => "Birthday",
         'avatar'=>'Avatar'
+    ],
+
+    'attributesProduct' => [
+        'name' => 'Name',
+        'stock' => "Stock",
+        'expired_at' => "Expired at",
+        'avatar' => "Avatar",
+        'sku' => "Sku",
+        'category_id'=>'Category ID'
     ],
 ];
