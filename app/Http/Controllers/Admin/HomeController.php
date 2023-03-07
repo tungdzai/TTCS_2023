@@ -63,9 +63,11 @@ class HomeController extends Controller
         ];
         $status = $this->userRepository->addUser($dataUser);
         if ($status) {
-            return redirect()->route('admin.home')->with('successAdd', __('messages.success.addUser'));
+            session()->flash('successAdd', __('messages.success.addUser'));
+            return redirect()->route('admin.home');
         } else {
-            return redirect()->route('admin.addUser')->with('errorAdd', __('messages.success.addUser'));
+            session()->flash('errorAdd', __('messages.success.addUser'));
+            return redirect()->route('admin.addUser');
         }
     }
 
@@ -109,9 +111,11 @@ class HomeController extends Controller
         ];
         $status = $this->userRepository->updateUser($dataUpdate, $id);
         if ($status) {
-            return redirect()->route('admin.home')->with('successUpdate', __('messages.success.successUpdate'));
+            session()->flash('successUpdate', __('messages.success.successUpdate'));
+            return redirect()->route('admin.home');
         } else {
-            return redirect()->route('admin.getEdit')->with('errorUpdate', __('messages.errors.updateUser'));
+            session()->flash('errorUpdate',__('messages.errors.updateUser'));
+            return redirect()->route('admin.getEdit');
         }
     }
 

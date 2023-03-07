@@ -64,9 +64,11 @@ class ProductsController extends Controller
         ];
         $status = $this->productRepository->addProduct($dataProduct);
         if ($status) {
-            return redirect()->route('user.product')->with('successAdd', __('messages.success.addUser'));
+            session()->flash('successAdd', __('messages.success.addUser'));
+            return redirect()->route('user.product');
         } else {
-            return redirect()->route('user.addProduct')->with('errorAdd', __('messages.success.addUser'));
+            session()->flash('errorAdd', __('messages.success.addUser'));
+            return redirect()->route('user.addProduct');
         }
     }
 
@@ -110,11 +112,26 @@ class ProductsController extends Controller
         ];
         $status = $this->productRepository->updateProduct($updateProduct, $id);
         if ($status) {
-            return redirect()->route('user.product')->with('successUpdate', __('messages.success.successUpdate'));
+            session()->flash('successUpdate', __('messages.success.successUpdate'));
+            return redirect()->route('user.product');
         } else {
-            return redirect()->route('user.addProduct')->with('errorUpdate', __('messages.errors.updateUser'));
+            session()->flash('errorUpdate', __('messages.errors.updateUser'));
+            return redirect()->route('user.addProduct');
         }
-
+    }
+    public function deleteProduct($id){
+        $product=Products::find($id);
+        if (!$product){
+            return response()->json([
+               'status'=>'error',
+                'message'=>__('messages.errors.deleteAjax')
+            ]);
+        }
+        $product->delete();
+        return response()->json([
+            'status'=>'success',
+            'message'=>__('messages.success.deleteUser')
+        ]);
 
     }
 

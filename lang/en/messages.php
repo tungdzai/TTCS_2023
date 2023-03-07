@@ -4,6 +4,7 @@ return [
         'login' => 'Đăng nhập không thành công !',
         'addUser' => "Thêm mới không thành công ! ",
         'updateUser' => "Thêm mới không thành công ! ",
+        'deleteAjax'=>"Xóa không thành công !"
     ],
     'success' => [
         'addUser' => "Thêm mới thành công",

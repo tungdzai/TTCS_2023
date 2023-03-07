@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../admin_lte/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Login</title>
 </head>
 
@@ -38,8 +39,20 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
+
+{{--                                @if(session('error'))--}}
+{{--                                    <div class="alert alert-danger text-center">{{session('error')}}</div>--}}
+{{--                                @endif--}}
                                 @if(session('error'))
-                                    <div class="alert alert-danger text-center">{{session('error')}}</div>
+                                    <script>
+                                        Swal.fire({
+                                            position: 'top-center',
+                                            icon: 'error',
+                                            title: '{{session('error')}}',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                    </script>
                                 @endif
                                 <form class="user" method="post" action="{{route('auth.postLogin')}}">
                                     @csrf
@@ -85,6 +98,8 @@
 
 <!-- Custom scripts for all pages-->
 <script src="../admin_lte/js/sb-admin-2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
+
 
 </body>
 

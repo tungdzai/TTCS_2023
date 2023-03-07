@@ -37,11 +37,4 @@ class UserController extends Controller
         return redirect()->back()->with("error",__('messages.errors.login'));
     }
 
-    /** View Register
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function getRegister()
-    {
-        return view('auth.user.register');
-    }
 }
