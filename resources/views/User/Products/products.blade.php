@@ -20,7 +20,7 @@
         <div class="input-group">
             @csrf
             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                   aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{session('titleSearch')}}">
+                   aria-label="Search" aria-describedby="basic-addon2" name="search" value="">
             <select name="stock" id="stock" class="bg-light border-0 small">
                 <option value="">All</option>
                 <option value="less_than_10">10</option>
@@ -109,7 +109,9 @@
                                         class="fas fa-user-edit"></i></a>
                             </td>
                             <td>
-                                <button class="deleteProduct" data-id="{{$product->id}}" style="border: none;background-color: #ffffff ;color: red"><i class="fas fa-user-times"></i></button>
+                                <button class="deleteProduct" data-id="{{$product->id}}"
+                                        style="border: none;background-color: #ffffff ;color: red"><i
+                                        class="fas fa-user-times"></i></button>
                             </td>
                         </tr>
                     @endforeach

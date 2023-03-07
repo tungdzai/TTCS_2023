@@ -90,6 +90,10 @@ class ProductsController extends Controller
         return redirect()->route('user.product');
     }
 
+    /** handle edit product
+     * @param ProductRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handleEditProduct(ProductRequest $request)
     {
         $id = session('id');
@@ -119,18 +123,24 @@ class ProductsController extends Controller
             return redirect()->route('user.addProduct');
         }
     }
-    public function deleteProduct($id){
-        $product=Products::find($id);
-        if (!$product){
+
+    /** delete product
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteProduct($id)
+    {
+        $product = Products::find($id);
+        if (!$product) {
             return response()->json([
-               'status'=>'error',
-                'message'=>__('messages.errors.deleteAjax')
+                'status' => 'error',
+                'message' => __('messages.errors.deleteAjax')
             ]);
         }
         $product->delete();
         return response()->json([
-            'status'=>'success',
-            'message'=>__('messages.success.deleteUser')
+            'status' => 'success',
+            'message' => __('messages.success.deleteUser')
         ]);
 
     }

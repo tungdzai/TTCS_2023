@@ -1,4 +1,4 @@
-// xóa
+// delete ajax
 $('.deleteProduct').on('click', function () {
     const id = $(this).data('id');
     console.log('/user/delete-product/:id'.replace(':id', id));
