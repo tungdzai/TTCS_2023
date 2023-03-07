@@ -4,9 +4,6 @@ use App\Models\Categories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 class CategoryReponsitory implements CategoryRepositoryInterface{
-
-    public $table = 'categories';
-
     /**handle paginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
