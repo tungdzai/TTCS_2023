@@ -38,33 +38,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(empty(count($users)))
-                    <tr class=" text-center">
-                        <td colspan="9">Không có user nào !</td>
+                @foreach($users as $index => $user)
+                    <tr class="text-left ">
+                        <td>{{$index+1}}</td>
+                        <td>{{$user->user_name}}</td>
+                        <td>{{$user->first_name}}</td>
+                        <td>{{$user->last_name}}</td>
+                        <td>{{$user->birthday}}</td>
+                        <td>{{$user->email}}</td>
+                        <td class="text-center">{{$user->flag_delete}}</td>
+                        <td>
+                            <a href="{{route('admin.getEdit',['id'=>$user->id])}}"><i class="fas fa-user-edit"></i></a>
+                        </td>
+                        <td>
+                            <a href="{{route('admin.deleteUser',['id'=>$user->id])}}"><i class="fas fa-user-times"></i></a>
+                        </td>
                     </tr>
-                @else
-                    @foreach($users as $index => $user)
-                        <tr class="text-left ">
-                            <td>{{$index+1}}</td>
-                            <td>{{$user->user_name}}</td>
-                            <td>{{$user->first_name}}</td>
-                            <td>{{$user->last_name}}</td>
-                            <td>{{$user->birthday}}</td>
-                            <td>{{$user->email}}</td>
-                            <td class="text-center">{{$user->flag_delete}}</td>
-                            <td>
-                                <a href="{{route('admin.getEdit',['id'=>$user->id])}}"><i class="fas fa-user-edit"></i></a>
-                            </td>
-                            <td>
-                                <a href="{{route('admin.deleteUser',['id'=>$user->id])}}"><i
-                                        class="fas fa-user-times"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
-        {{--        {{$users->links()}}--}}
+        {{$users->links()}}
     </div>
 @endsection
