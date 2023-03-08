@@ -13,14 +13,50 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <a href="{{route('admin.addUser')}}" class="btn btn-primary">Thêm User</a>
+
         @if(session('successAdd'))
-            <div class="alert alert-success">{{session('successAdd')}}</div>
-        @elseif(session('errorAdd'))
-            <div class="alert alert-danger">{{session('errorAdd')}}</div>
-        @elseif(session('successUpdate'))
-            <div class="alert alert-success">{{session('successUpdate')}}</div>
-        @elseif(session('successDelete'))
-            <div class="alert alert-success">{{session('successDelete')}}</div>
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: '{{ session('successAdd') }}',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+        @endif
+        @if(session('errorAdd'))
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: '{{ session('errorAdd') }}',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+        @endif
+        @if(session('successUpdate'))
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: '{{ session('successUpdate') }}',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+        @endif
+        @if(session('successDelete'))
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: '{{ session('successDelete') }}',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
         @endif
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             <table class="table">

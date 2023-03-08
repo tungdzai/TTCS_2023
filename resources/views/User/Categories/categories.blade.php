@@ -20,11 +20,37 @@
         <a href="{{route('user.addCategory')}}" class="btn btn-primary">Thêm danh mục</a>
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             @if(session('successAdd'))
-                <div class="alert alert-success">{{session('successAdd')}}</div>
-            @elseif(session('successUpdate'))
-                <div class="alert alert-success">{{session('successUpdate')}}</div>
-            @elseif(session('successDelete'))
-                <div class="alert alert-success">{{session('successDelete')}}</div>
+                <script>
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: '{{ session('successAdd') }}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
+            @endif
+            @if(session('successUpdate'))
+                <script>
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: '{{ session('successUpdate') }}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
+            @endif
+            @if(session('successDelete'))
+                <script>
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: '{{ session('successDelete') }}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
             @endif
             <table class="table">
                 <thead>
@@ -43,10 +69,12 @@
                         <td>{{$category->name}}</td>
                         <td>{{$category->parent_id}}</td>
                         <td>
-                            <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i class="fas fa-user-edit"></i></a>
+                            <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i
+                                    class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
-                            <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i class="fas fa-user-times"></i></a>
+                            <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i
+                                    class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach

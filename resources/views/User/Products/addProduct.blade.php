@@ -9,7 +9,7 @@
             <span>Category</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('user.product')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Product</span></a>
     </li>

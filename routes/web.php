@@ -6,6 +6,11 @@ use App\Http\Controllers\User\Categories\CategoriesController;
 use  App\Http\Controllers\User\Products\ProductsController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\Products\DownloadController;
+use App\Http\Controllers\User\Products\SearchController;
+use App\Http\Controllers\Admin\SearchUserController;
+use App\Http\Controllers\Admin\SendMailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +40,8 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
     Route::get('/edit', [HomeController::class, 'getEdit'])->name('getEdit');
     Route::post('/edit', [HomeController::class, 'postEdit'])->name('postEdit');
     Route::get('/delete', [HomeController::class, 'deleteUser'])->name('deleteUser');
+    Route::post('/search', [SearchUserController::class, 'search'])->name("search");
+
 });
 
 // Route user
@@ -52,14 +59,17 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
     Route::post('/add-category', [CategoriesController::class, 'handleAddCategory'])->name('handleAddCategory');
     Route::get('/edit-category', [CategoriesController::class, 'getEditCategory'])->name('getEditCategory');
     Route::post('/edit-category', [CategoriesController::class, 'handleEditCategory'])->name('handleEditCategory');
-    Route::get('/delete', [CategoriesController::class, 'deleteCategory'])->name('deleteCategory');
+    Route::get('/delete-Category', [CategoriesController::class, 'deleteCategory'])->name('deleteCategory');
+
+    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/add-product', [ProductsController::class, 'addProduct'])->name("addProduct");
+    Route::post('/add-product', [ProductsController::class, 'handleAddProduct'])->name("handleAddProduct");
+    Route::get('/edit-product', [ProductsController::class, 'getEditProduct'])->name("getEditProduct");
+    Route::post('/edit-product', [ProductsController::class, 'handleEditProduct'])->name("handleEditProduct");
+    Route::get("/delete-product/{id}", [ProductsController::class, 'deleteProduct'])->name("deleteProduct");
+
+    Route::post('/search', [SearchController::class, 'search'])->name("search");
+
 });
-//Route Products
-Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function () {
-    Route::get('/product', [ProductsController::class,'index'])->name('product');
-    Route::get('/add-product',[ProductsController::class,'addProduct'])->name("addProduct");
-    Route::post('/add-product',[ProductsController::class,'handleAddProduct'])->name("handleAddProduct");
-    Route::get('/edit-product',[ProductsController::class,'getEditProduct'])->name("getEditProduct");
-    Route::post('/edit-product',[ProductsController::class,'handleEditProduct'])->name("handleEditProduct");
-});
+
 

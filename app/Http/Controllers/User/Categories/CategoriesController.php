@@ -51,8 +51,10 @@ class CategoriesController extends Controller
         ];
         $status = $this->categoryRepository->addCategory($dataCategory);
         if ($status) {
-            return redirect()->route('user.category')->with("successAdd", __('messages.success.addUser'));
+            session()->flash("successAdd", __('messages.success.addUser'));
+            return redirect()->route('user.category');
         }
+        session()->flash("errors",__('messages.errors.addUser'));
         return redirect()->route('user.addCategory')->with('errors', __('messages.errors.addUser'));
     }
 
@@ -100,9 +102,11 @@ class CategoriesController extends Controller
         ];
         $status = $this->categoryRepository->updateCategory($dataCategory, $id);
         if ($status) {
-            return redirect()->route('user.category')->with('successUpdate', __('messages.success.successUpdate'));
+            session()->flash('successUpdate', __('messages.success.successUpdate'));
+            return redirect()->route('user.category');
         } else {
-            return redirect()->route('user.getEditCategory')->with('errorUpdate', __('messages.errors.updateUser'));
+            session()->flash('errorUpdate', __('messages.errors.updateUser'));
+            return redirect()->route('user.getEditCategory');
         }
     }
 
