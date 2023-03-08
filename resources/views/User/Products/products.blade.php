@@ -41,6 +41,16 @@
         <!-- Page Heading -->
         <div class="option_product d-flex justify-content-between">
             <a href="{{route("user.addProduct")}}" class="btn btn-primary">Thêm sản phẩm</a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Download
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{{route('download.CSV')}}">CSV</a></li>
+                    <li><a class="dropdown-item" href="{{route('download.PDF')}}">PDF</a></li>
+                </ul>
+            </div>
         </div>
         <div class="d;-sm-flex align-items-center justify-content-between mb-4 py-2">
             @if(session('successAdd'))
