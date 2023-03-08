@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(UserReponsitoryInterface::class, UserReponsitory::class);
         $this->app->singleton(CategoryRepositoryInterface::class, CategoryReponsitory::class);
         $this->app->singleton(ProductRepositoryInterface::class, ProductRepository::class);
-        $this->app->singleton(DeleteServiceInterface::class,DeleteService::class);
-        $this->app->singleton(ImageUploadServiceInterface::class,ImageUploadService::class);
+        $this->app->singleton(DeleteServiceInterface::class, DeleteService::class);
+        $this->app->singleton(ImageUploadServiceInterface::class, ImageUploadService::class);
 
 
     }
