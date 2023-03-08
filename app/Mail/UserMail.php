@@ -31,8 +31,8 @@ class UserMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('tungnguyen0603202@gmail.com', 'Nguyen Viet Tung'),
-            subject: 'Thông báo đăng kí thành công tài khoản ',
+            from: new Address(env('MAIL_USERNAME'), env('MAIL_NAME')),
+            subject: env('MAIL_SUBJECT'),
         );
     }
 
