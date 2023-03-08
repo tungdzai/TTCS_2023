@@ -11,9 +11,10 @@ use Barryvdh\DomPDF\PDF;
 class DownloadController extends Controller
 {
     public $products;
+
     public function __construct()
     {
-        $this->products=Products::select('products.id', 'products.name', 'products.stock', 'categories.name AS category_name', 'products.expired_at')
+        $this->products = Products::select('products.id', 'products.name', 'products.stock', 'categories.name AS category_name', 'products.expired_at')
             ->join('categories', 'categories.id', 'products.category_id')
             ->get();
     }
@@ -21,22 +22,25 @@ class DownloadController extends Controller
     /** handle download file PDF
      * @return mixed
      */
-    public function downloadPDF(){
-        $products=$this->products;
-        if ($products->isEmpty()){
-            session()->flash("errorDownload","Không có sản phẩm nào !");
+    public function downloadPDF()
+    {
+        $products = $this->products;
+        if ($products->isEmpty()) {
+            session()->flash("errorDownload", "Không có sản phẩm nào !");
         }
         $pdf = app(PDF::class);
         $pdf->loadView('user.Products.products-pdf', compact('products'));
         return $pdf->stream('danh_sach_san_pham.pdf');
     }
+
     /** handle download file csv
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
-    public function downloadCSV(){
-        $products=$this->products;
-        if ($products->isEmpty()){
-            session()->flash("errorDownload","Không có sản phẩm nào !");
+    public function downloadCSV()
+    {
+        $products = $this->products;
+        if ($products->isEmpty()) {
+            session()->flash("errorDownload", "Không có sản phẩm nào !");
         }
         $headers = [
             'Content-Type' => 'text/csv',
