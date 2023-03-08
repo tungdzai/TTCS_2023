@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Mail;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,9 +18,10 @@ class UserMail extends Mailable
      * Create a new message instance.
      */
     protected $user;
+
     public function __construct($user)
     {
-        $this->user=$user;
+        $this->user = $user;
 
     }
 
@@ -29,7 +31,7 @@ class UserMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from:new Address('tungnguyen0603202@gmail.com','Nguyen Viet Tung'),
+            from: new Address('tungnguyen0603202@gmail.com', 'Nguyen Viet Tung'),
             subject: 'Thông báo đăng kí thành công tài khoản ',
         );
     }
@@ -42,7 +44,7 @@ class UserMail extends Mailable
         return new Content(
             view: 'mail.sendmail',
             with: [
-                'user'=>$this->user,
+                'user' => $this->user,
             ]
         );
     }

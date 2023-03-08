@@ -66,7 +66,7 @@ class HomeController extends Controller
         ];
         $status = $this->userRepository->addUser($dataUser);
         if ($status) {
-            SendMail::dispatch($request->email,$password);
+            SendMail::dispatch($request->email, $password);
             session()->flash('successAdd', __('messages.success.addUser'));
             return redirect()->route('admin.home');
         } else {

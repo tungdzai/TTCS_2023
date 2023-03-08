@@ -18,12 +18,13 @@ class SendMail implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    protected $email,$password;
-    public function __construct($email,$password)
+    protected $email, $password;
+
+    public function __construct($email, $password)
     {
 //        $this->delay= now()->addMinute();
-        $this->email=$email;
-        $this->password=$password;
+        $this->email = $email;
+        $this->password = $password;
     }
 
     /**
@@ -31,9 +32,9 @@ class SendMail implements ShouldQueue
      */
     public function handle(): void
     {
-        $user=[
-            'email'=>$this->email,
-            'password'=>$this->password,
+        $user = [
+            'email' => $this->email,
+            'password' => $this->password,
         ];
         Mail::to($this->email)->send(new UserMail($user));
 
