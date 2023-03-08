@@ -14,14 +14,14 @@ use App\Services\Upload\ImageUploadServiceInterface;
 
 class ProductsController extends Controller
 {
-    protected $productRepository, $categoryRepository,$deleteService,$imageService;
+    protected $productRepository, $categoryRepository, $deleteService, $imageService;
 
-    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository,DeleteServiceInterface $deleteService,ImageUploadServiceInterface $imageService)
+    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository, DeleteServiceInterface $deleteService, ImageUploadServiceInterface $imageService)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
-        $this->deleteService=$deleteService;
-        $this->imageService=$imageService;
+        $this->deleteService = $deleteService;
+        $this->imageService = $imageService;
     }
 
     /** get view list products

@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    protected $categoryRepository,$deleteService;
+    protected $categoryRepository, $deleteService;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository,DeleteServiceInterface $deleteService)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, DeleteServiceInterface $deleteService)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->deleteService=$deleteService;
+        $this->deleteService = $deleteService;
     }
 
     /** paginate
@@ -56,7 +56,7 @@ class CategoriesController extends Controller
             session()->flash("successAdd", __('messages.success.addUser'));
             return redirect()->route('user.category');
         }
-        session()->flash("errors",__('messages.errors.addUser'));
+        session()->flash("errors", __('messages.errors.addUser'));
         return redirect()->route('user.addCategory')->with('errors', __('messages.errors.addUser'));
     }
 
@@ -121,7 +121,7 @@ class CategoriesController extends Controller
 
         $id = $request->get('id');
         if (Categories::where('id', $id)->exists()) {
-            $status=$this->deleteService->delete($id);
+            $status = $this->deleteService->delete($id);
             if ($status) {
                 return redirect()->route("user.category")->with("successDelete", __('messages.success.deleteUser'));
             }

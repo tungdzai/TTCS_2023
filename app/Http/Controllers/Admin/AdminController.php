@@ -35,7 +35,7 @@ class AdminController extends Controller
             $request->session()->regenerate();
             return redirect()->route("admin.home");
         }
-        session()->flash("error",__('messages.errors.login'));
+        session()->flash("error", __('messages.errors.login'));
         return redirect()->back();
     }
 }

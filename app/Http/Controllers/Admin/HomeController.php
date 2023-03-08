@@ -114,7 +114,7 @@ class HomeController extends Controller
             session()->flash('successUpdate', __('messages.success.successUpdate'));
             return redirect()->route('admin.home');
         } else {
-            session()->flash('errorUpdate',__('messages.errors.updateUser'));
+            session()->flash('errorUpdate', __('messages.errors.updateUser'));
             return redirect()->route('admin.getEdit');
         }
     }
