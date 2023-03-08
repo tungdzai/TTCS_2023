@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Http\Requests\User\Category\CategoryRequest;
+use App\Services\Delete\DeleteServiceInterface;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    protected $categoryRepository;
+    protected $categoryRepository,$deleteService;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository,DeleteServiceInterface $deleteService)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->deleteService=$deleteService;
     }
 
     /** paginate
@@ -119,7 +121,7 @@ class CategoriesController extends Controller
 
         $id = $request->get('id');
         if (Categories::where('id', $id)->exists()) {
-            $status = $this->categoryRepository->deleteCategory($id);
+            $status=$this->deleteService->delete($id);
             if ($status) {
                 return redirect()->route("user.category")->with("successDelete", __('messages.success.deleteUser'));
             }
