@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\PostRequest;
 use App\Models\Users;
 use App\Repositories\User\UserReponsitoryInterface;
 use Illuminate\Http\Request;
+use App\Jobs\SendMail;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -48,13 +50,14 @@ class HomeController extends Controller
             $file->move(public_path('upload/user/avatar'), $file_name);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
+        $password = Str::random(10);
         $dataUser = [
             'email' => $request->email,
             'user_name' => $request->user,
             'birthday' => $request->birthday,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'password' => bcrypt('1'),
+            'password' => bcrypt($password),
             'reset_password' => bcrypt('1'),
             'status' => "active",
             'avatar' => $pathAvatar,
@@ -63,6 +66,7 @@ class HomeController extends Controller
         ];
         $status = $this->userRepository->addUser($dataUser);
         if ($status) {
+            SendMail::dispatch($request->email, $password);
             session()->flash('successAdd', __('messages.success.addUser'));
             return redirect()->route('admin.home');
         } else {
