@@ -12,7 +12,14 @@ class SearchController extends Controller
 
     public function __construct()
     {
-        $this->query = Products::select('Products.id', 'Products.name', 'Products.stock', 'Products.sku', 'Products.category_id', 'Products.expired_at');
+        $this->query = Products::select(
+            'products.id',
+            'products.name',
+            'products.stock',
+            'products.sku',
+            'products.category_id',
+            'products.expired_at'
+        );
 
     }
 

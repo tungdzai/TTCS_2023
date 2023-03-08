@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Users;
+
 class SearchUserController extends Controller
 {
     public $query;
 
     public function __construct()
     {
-        $this->query = Users::select('id', 'email', 'user_name', 'birthday', 'first_name', 'last_name','flag_delete');
+        $this->query = Users::select('id', 'email', 'user_name', 'birthday', 'first_name', 'last_name', 'flag_delete');
     }
 
     /** handle search user
@@ -23,13 +24,13 @@ class SearchUserController extends Controller
     {
         $keyword = $request->input('search');
         $this->query->where(function ($query) use ($keyword) {
-            $query->where('first_name', 'like', '%'.$keyword.'%')
-                ->orWhere('last_name', 'like', '%'.$keyword.'%')
-                ->orWhere('user_name', 'like', '%'.$keyword.'%')
-                ->orWhere('email', 'like', '%'.$keyword.'%');
+            $query->where('first_name', 'like', '%' . $keyword . '%')
+                ->orWhere('last_name', 'like', '%' . $keyword . '%')
+                ->orWhere('user_name', 'like', '%' . $keyword . '%')
+                ->orWhere('email', 'like', '%' . $keyword . '%');
         });
         $users = $this->query->get();
-        $data["users"]= $users;
+        $data["users"] = $users;
         return view('Admin.users', $data);
     }
 }

@@ -116,6 +116,6 @@
                 </tbody>
             </table>
         </div>
-{{--        {{$users->links()}}--}}
+        {{--        {{$users->links()}}--}}
     </div>
 @endsection
