@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public $model;
+
     public function __construct()
     {
         $this->model = new Users();
@@ -34,7 +35,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect()->route("user.category");
         }
-        return redirect()->back()->with("error",__('messages.errors.login'));
+        return redirect()->back()->with("error", __('messages.errors.login'));
     }
 
 }

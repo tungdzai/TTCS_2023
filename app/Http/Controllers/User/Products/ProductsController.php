@@ -4,20 +4,24 @@ namespace App\Http\Controllers\User\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Products;
+use App\Services\Delete\DeleteServiceInterface;
 use Illuminate\Http\Request;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests\User\Product\ProductRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Services\Upload\ImageUploadServiceInterface;
 
 
 class ProductsController extends Controller
 {
-    protected $productRepository, $categoryRepository;
+    protected $productRepository, $categoryRepository, $deleteService, $imageService;
 
-    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository)
+    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository, DeleteServiceInterface $deleteService, ImageUploadServiceInterface $imageService)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->deleteService = $deleteService;
+        $this->imageService = $imageService;
     }
 
     /** get view list products
@@ -47,9 +51,7 @@ class ProductsController extends Controller
     public function handleAddProduct(ProductRequest $request): \Illuminate\Http\RedirectResponse
     {
         if ($request->hasFile('avatar')) {
-            $file = $request->avatar;
-            $file_name = $file->getClientOriginalName();
-            $file->move(public_path('upload/user/avatar'), $file_name);
+            $file_name = $this->imageService->upload($request->avatar);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
         $dataProduct = [
@@ -98,9 +100,7 @@ class ProductsController extends Controller
     {
         $id = session('id');
         if ($request->hasFile('avatar')) {
-            $file = $request->avatar;
-            $file_name = $file->getClientOriginalName();
-            $file->move(public_path('upload/user/avatar'), $file_name);
+            $file_name = $this->imageService->upload($request->avatar);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
         }
 
