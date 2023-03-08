@@ -49,6 +49,39 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="avatar">Tỉnh/Thành phố:</label>
+                <select name="province" id="province" class="form-control">
+                </select>
+                @error("province")
+                <span style="color: red">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="avatar">Quận/Huyện:</label>
+                <select name="district" id="district" class="form-control">
+                    <option value="">--Chọn huyện--</option>
+                </select>
+                @error("district")
+                <span style="color: red">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="avatar">Phường/Xã:</label>
+                <select name="commune" id="commune" class="form-control" >
+                    <option value="">--Chọn xã--</option>
+                </select>
+                @error("commune")
+                <span style="color: red">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="avatar">Address:</label>
+                <textarea name="address" id="address"  rows="2"  class="form-control"></textarea>
+                @error("address")
+                <span style="color: red">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="avatar">Avatar</label>
                 <input type="file" name="avatar" class="form-control-file " id="avatar"  onchange="previewImage()">
                 <img id="preview" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;">
@@ -57,6 +90,4 @@
             @csrf
         </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
-    <script src="../../admin_lte/js/previewAvatar.js"></script>
 @endsection

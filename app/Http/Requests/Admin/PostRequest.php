@@ -28,6 +28,10 @@ class PostRequest extends FormRequest
             'last_name' => 'required|max:50',
             'birthday' => 'required|date|before:-18 years',
             'avatar' => 'required|file|mimes:jpeg,png|max:3072',
+            'province'=>'required',
+            'district'=>'required',
+            'commune'=>'required',
+            'address'=>'required',
         ];
     }
 
@@ -58,6 +62,11 @@ class PostRequest extends FormRequest
             'avatar.image'=>__('messages.messages.format'),
             'avatar.mimes'=>__('messages.messages.image'),
             'avatar.max'=>':attribute max 3MB ',
+
+            'province.required'=>__('messages.messages.required'),
+            'district.required'=>__('messages.messages.required'),
+            'commune.required'=>__('messages.messages.required'),
+            'address.required'=>__('messages.messages.required'),
         ];
     }
 

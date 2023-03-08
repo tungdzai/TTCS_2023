@@ -10,6 +10,7 @@ use App\Http\Controllers\User\Products\DownloadController;
 use App\Http\Controllers\User\Products\SearchController;
 use App\Http\Controllers\Admin\SearchUserController;
 use App\Http\Controllers\Admin\SendMailController;
+use App\Http\Controllers\Admin\AccommodationController;
 
 
 /*
@@ -41,6 +42,10 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
     Route::post('/edit', [HomeController::class, 'postEdit'])->name('postEdit');
     Route::get('/delete', [HomeController::class, 'deleteUser'])->name('deleteUser');
     Route::post('/search', [SearchUserController::class, 'search'])->name("search");
+
+    Route::get('/provinces', [AccommodationController::class,'getProvinces'])->name("getProvinces");
+    Route::get('/districts/{province_id}', [AccommodationController::class,'getDistricts']);
+    Route::get('/communes/{district_id}', [AccommodationController::class,'getCommunes']);
 
 });
 
