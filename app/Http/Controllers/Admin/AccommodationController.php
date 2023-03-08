@@ -19,6 +19,7 @@ class AccommodationController extends Controller
 
         return response()->json($provinces);
     }
+
     /** get data Districts
      * @return \Illuminate\Http\JsonResponse
      */
@@ -28,6 +29,7 @@ class AccommodationController extends Controller
 
         return response()->json($districts);
     }
+
     /** get data Communes
      * @return \Illuminate\Http\JsonResponse
      */

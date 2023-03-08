@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Commune extends Model
 {
     use HasFactory;
-    public $table='commune';
+
+    public $table = 'commune';
 }

@@ -63,10 +63,10 @@ class HomeController extends Controller
             'avatar' => $pathAvatar,
             'flag_delete' => 0,
             'created_at' => date(now('Asia/Ho_Chi_Minh')),
-            'address'=>$request->address,
-            'province_id'=>$request->province,
-            'district_id'=>$request->district,
-            'commune_id'=>$request->commune
+            'address' => $request->address,
+            'province_id' => $request->province,
+            'district_id' => $request->district,
+            'commune_id' => $request->commune
 
         ];
         $status = $this->userRepository->addUser($dataUser);
@@ -117,10 +117,10 @@ class HomeController extends Controller
             'last_name' => $request->last_name,
             'avatar' => $pathAvatar,
             'updated_at' => date(now('Asia/Ho_Chi_Minh')),
-            'address'=>$request->address,
-            'province_id'=>$request->province,
-            'district_id'=>$request->district,
-            'commune_id'=>$request->commune
+            'address' => $request->address,
+            'province_id' => $request->province,
+            'district_id' => $request->district,
+            'commune_id' => $request->commune
 
         ];
         $status = $this->userRepository->updateUser($dataUpdate, $id);

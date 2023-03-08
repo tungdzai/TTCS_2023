@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     use HasFactory;
-    public $table='district';
+
+    public $table = 'district';
 }
