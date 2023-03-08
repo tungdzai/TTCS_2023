@@ -71,10 +71,5 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
     Route::post('/search', [SearchController::class, 'search'])->name("search");
 
 });
-// Download
-Route::prefix('/download')->name("download.")->group(function () {
-    Route::get("/CSV", [DownloadController::class, 'downloadCSV'])->name("CSV");
-    Route::get("/PDF", [DownloadController::class, 'downloadPDF'])->name("PDF");
-});
 
 
