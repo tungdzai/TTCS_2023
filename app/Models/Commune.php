@@ -9,5 +9,8 @@ class Commune extends Model
 {
     use HasFactory;
 
+    /** get table commune
+     * @var string
+     */
     public $table = 'commune';
 }

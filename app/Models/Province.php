@@ -9,5 +9,8 @@ class Province extends Model
 {
     use HasFactory;
 
+    /** get table province
+     * @var string
+     */
     public $table = 'province';
 }

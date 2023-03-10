@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class AccommodationController extends Controller
 {
-    /** get data Provinces
+    /**get data Provinces
+     * @param
      * @return \Illuminate\Http\JsonResponse
      */
     public function getProvinces()
@@ -20,7 +21,8 @@ class AccommodationController extends Controller
         return response()->json($provinces);
     }
 
-    /** get data Districts
+    /**get data Districts
+     * @param $province_id
      * @return \Illuminate\Http\JsonResponse
      */
     public function getDistricts($province_id)
@@ -31,6 +33,7 @@ class AccommodationController extends Controller
     }
 
     /** get data Communes
+     * @param $district_id
      * @return \Illuminate\Http\JsonResponse
      */
     public function getCommunes($district_id)
