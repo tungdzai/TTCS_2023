@@ -11,11 +11,12 @@ use App\Http\Resources\CustomersCollection;
 class CustomersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the rsesource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new CustomersCollection(Customers::paginate(2));
+        $customer=$request->user('customer');
+        return response()->json($customer);
     }
 
     /**
@@ -86,6 +87,12 @@ class CustomersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer=Customers::find($id);
+        if ($customer){
+            return $customer->delete();
+        }else{
+            return "Bản ghi không tồn tại !";
+        }
+
     }
 }
