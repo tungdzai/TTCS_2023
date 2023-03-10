@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://beetech.vn/admin/user/provinces',
+        url: '/admin/user/provinces',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
         localStorage.setItem('province_id', province_id);
         if (province_id) {
             $.ajax({
-                url: 'http://beetech.vn/admin/user/districts/' + province_id,
+                url: '/admin/user/districts/' + province_id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -55,7 +55,7 @@ $(document).ready(function () {
         localStorage.setItem('district_id', district_id);
         if (district_id) {
             $.ajax({
-                url: 'https://beetech.vn/admin/user/communes/' + district_id,
+                url: '/admin/user/communes/' + district_id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
