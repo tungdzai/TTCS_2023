@@ -76,5 +76,6 @@
 <script src="../../assets/js/delete.js"></script>
 <script src="../../assets/js/previewProduct.js"></script>
 <script src="../../admin_lte/js/previewAvatar.js"></script>
+<script src="../../assets/js/province_district_commune.js"></script>
 </body>
 </html>

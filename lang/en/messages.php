@@ -30,7 +30,11 @@ return [
         'first_name' => "First Name",
         'last_name' => "Last Name",
         'birthday' => "Birthday",
-        'avatar'=>'Avatar'
+        'avatar'=>'Avatar',
+        'province'=>"Tỉnh/Thành phố",
+        'district'=>'Quận/Huyện',
+        'commune'=>"Phường/Xã",
+        'address'=>"Địa chỉ ",
     ],
 
     'attributesProduct' => [
