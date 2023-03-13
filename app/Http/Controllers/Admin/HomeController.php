@@ -9,6 +9,7 @@ use App\Repositories\User\UserReponsitoryInterface;
 use Illuminate\Http\Request;
 use App\Jobs\SendMail;
 use Illuminate\Support\Str;
+use App\Http\Requests\Admin\UpdateRequest;
 
 class HomeController extends Controller
 {
@@ -91,24 +92,28 @@ class HomeController extends Controller
         if (!empty($getUser)) {
             $data['getUser'] = $getUser;
             $request->session()->put('id', $id);
+            $request->session()->put('imageUser', $getUser->avatar);
             return view('admin.edit', $data);
         }
         return redirect()->route('admin.home');
     }
 
     /** handle EditUser
-     * @param PostRequest $request
+     * @param UpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit(PostRequest $request)
+    public function postEdit(UpdateRequest $request)
     {
+        $id = session('id');
+        $image_user=session('imageUser');
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $file_name = $file->getClientOriginalName();
             $file->move(public_path('upload/user/avatar'), $file_name);
-            $pathAvatar = '/upload/user/avtar/' . $file_name;
+            $pathAvatar = '/upload/user/avatar/' . $file_name;
+        }else{
+            $pathAvatar=$image_user;
         }
-        $id = session('id');
         $dataUpdate = [
             'email' => $request->email,
             'user_name' => $request->user,

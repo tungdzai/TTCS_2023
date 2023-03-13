@@ -10,6 +10,7 @@ use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests\User\Product\ProductRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Services\Upload\ImageUploadServiceInterface;
+use App\Http\Requests\User\Product\ProductUpdateRequest;
 
 
 class ProductsController extends Controller
@@ -86,6 +87,7 @@ class ProductsController extends Controller
                 $data['getProduct'] = $this->productRepository->getProduct($id);
                 $data['categories'] = $this->categoryRepository->getAll();
                 $request->session()->put('id', $id);
+                $request->session()->put('image_product', $this->productRepository->getProduct($id)->avatar);
                 return view('user.Products.editProduct', $data);
             }
         }
@@ -93,15 +95,17 @@ class ProductsController extends Controller
     }
 
     /** handle edit product
-     * @param ProductRequest $request
+     * @param ProductUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handleEditProduct(ProductRequest $request)
+    public function handleEditProduct(ProductUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $id = session('id');
         if ($request->hasFile('avatar')) {
             $file_name = $this->imageService->upload($request->avatar);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
+        }else{
+            $pathAvatar=session('image_product');
         }
 
         $updateProduct = [
