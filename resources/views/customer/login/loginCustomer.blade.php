@@ -11,7 +11,6 @@
 <body>
 <div class="materialContainer">
     <form action="{{route('postLoginCustomer')}}" method="post">
-        @csrf
         <div class="box">
             <div class="title">LOGIN</div>
             <div class="input">
@@ -28,6 +27,7 @@
             </div>
             <a href="" class="pass-forgot">Forgot your password?</a>
         </div>
+        @csrf
     </form>
 
     <div class="overbox">

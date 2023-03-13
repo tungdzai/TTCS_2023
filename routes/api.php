@@ -19,9 +19,9 @@ use App\Http\Controllers\Customers\AuthController;
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
 Route::get('/login-customer',[AuthController::class,'index'])->name("loginCustomer");
 Route::post('/login-customer',[AuthController::class,'login'])->name("postLoginCustomer");
-
 
 Route::middleware('auth:customer')->group(function () {
     Route::get('/customers', [CustomersController::class,'index']);

@@ -15,10 +15,6 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
     {
-        $customer=$request->user('customer');
-        return response()->json([
-            'customer'=>$customer
-        ]);
     }
 
     /**
@@ -34,19 +30,6 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'phone' => 'required',
-            'birthday' => 'required',
-            'full_name' => 'required',
-            'password' => 'required',
-            'address' => 'required',
-            'province_id' => 'required',
-            'district_id' => 'required',
-            'commune_id' => 'required',
-        ]);
-        $customers = Customers::create($request->all());
-        return new CustomersResource($customers);
     }
 
     /**
@@ -70,18 +53,6 @@ class CustomersController extends Controller
      */
     public function update(Request $request, Customers $customers)
     {
-        $request->validate([
-            'email' => 'required',
-            'phone' => 'required',
-            'birthday' => 'required',
-            'full_name' => 'required',
-            'password' => 'required',
-            'address' => 'required',
-            'province_id' => 'required',
-            'district_id' => 'required',
-            'commune_id' => 'required',
-        ]);
-        $customers->update($request->all());
     }
 
     /**
@@ -89,12 +60,6 @@ class CustomersController extends Controller
      */
     public function destroy(string $id)
     {
-        $customer=Customers::find($id);
-        if ($customer){
-            return $customer->delete();
-        }else{
-            return "Bản ghi không tồn tại !";
-        }
 
     }
 }

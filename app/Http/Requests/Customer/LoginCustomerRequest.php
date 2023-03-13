@@ -24,16 +24,20 @@ class LoginCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'required|regex:/^0[0-9]{9}$/|unique:customers',
+            'phone' => 'required|regex:/^0[0-9]{9}$/|exists:customers,phone',
             'password' => 'required'
         ];
     }
 
+    /**Error notification when occurring
+     * @return string[]
+     */
     public function messages()
     {
         return [
             'phone.required' => 'Số điện thoại không được để trống !',
             'phone.regex' => 'Số điện thoại chưa đúng định dạng !',
+            'phone.exists' => 'Số điện thoại chưa đăng kí !',
             'password.required' => 'Mật khẩu không được để trống !',
         ];
     }
