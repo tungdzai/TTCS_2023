@@ -70,7 +70,7 @@ $(document).ready(function () {
     });
     if (localStorage.getItem('province_id')){
         $.ajax({
-            url: 'http://beetech.vn/admin/user/districts/' + localStorage.getItem('province_id'),
+            url: '/admin/user/districts/' + localStorage.getItem('province_id'),
             type: 'GET',
             dataType: 'json',
             success: function (data) {
