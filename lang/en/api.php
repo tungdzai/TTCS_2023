@@ -6,5 +6,8 @@ return [
     ],
     'success'=>[
         'login'=>'Đăng nhập thành công'
+    ],
+    'product'=>[
+        'not_exist'=>"Sản phẩm không tồn tại !",
     ]
 ];
