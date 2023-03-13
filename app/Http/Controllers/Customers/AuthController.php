@@ -3,65 +3,40 @@
 namespace App\Http\Controllers\Customers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Customer\LoginCustomerRequest;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return view('customer.login.loginCustomer');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function login(LoginCustomerRequest $request)
     {
-        //
-    }
+//        $passPostCustomer = Customers::where('phone',$request->input('phone'))->first();
+//        if ($passPostCustomer->validateForPasspostPasswordGrant($request->input("password"))){
+//            return "pass qua";
+//        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    public function login(Request $request){
-        $credentials = request(['phone', 'password']);
-        if (!Auth::guard('customer')->attempt($credentials)) {
-            return response()->json([
-                'error' => 'Unauthorized'
-            ], 401);
+//        if (Auth::guard('customer')->attempt($credentials)) {
+//            dd("ok");
+//            $customer = $request->user('customer');
+//            $tokenResult = $customer->createToken('Personal Access Token');
+//            $token = $tokenResult->token;
+//            $token->save();
+//            return response()->json([
+//                'access_token' => $token,
+//                'token_type' => 'Bearer',
+//                'msg'=>'Đăng nhập thành công',
+//            ],200);
         }
-        $customer = $request->user('customer');
-        $tokenResult = $customer->createToken('Personal Access Token');
-        $token = $tokenResult->token;
-        $token->save();
-        return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-        ]);
-    }
+
+//        return response()->json([
+//            'error' => 'Unauthorized'
+//        ], 401);
+//    }
 }

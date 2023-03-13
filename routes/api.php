@@ -15,14 +15,14 @@ use App\Http\Controllers\Customers\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+Route::get('/login-customer',[AuthController::class,'index'])->name("loginCustomer");
+Route::post('/login-customer',[AuthController::class,'login'])->name("postLoginCustomer");
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-
-Route::post('login',[AuthController::class,'login']);
-
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:customer')->group(function () {
     Route::get('/customers', [CustomersController::class,'index']);
 });

@@ -16,7 +16,9 @@ class CustomersController extends Controller
     public function index(Request $request)
     {
         $customer=$request->user('customer');
-        return response()->json($customer);
+        return response()->json([
+            'customer'=>$customer
+        ]);
     }
 
     /**
