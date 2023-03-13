@@ -7,13 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+
+/**
+ * Class Customer
+ * @property string $email
+ * @property string $phone
+ * @property date $birthday
+ * @property string $full_name
+ * @property string $password
+ * @property string $reset_password
+ * @property bool $flag_delete
+ * @property string $address
+ * @property integer $province_id
+ * @property integer $district_id
+ * @property integer $commune_id
+ */
 class Customers extends Authenticatable
 {
     use HasFactory,HasApiTokens,Notifiable;
 
-    /** table customers
-     * @var string
-     */
     public $table = "customers";
     protected $fillable = [
         'email',

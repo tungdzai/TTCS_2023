@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         if (! $customer || ! Hash::check($password, $customer->password)) {
             return response()->json(
-                ['error' => 'Số điện thoại hoặc mật khẩu không chính xác !'],
+                ['error' => trans('api.error.login')],
                 Response::HTTP_UNAUTHORIZED );
         } else {
             $customer = Auth::guard('customer')->user();
@@ -35,7 +35,7 @@ class AuthController extends Controller
             return response()->json([
                 'access_token' => $token_customer->accessToken,
                 'token_type' => 'Bearer',
-                'msg' => 'Đăng nhập thành công',
+                'success' => trans('api.success.login'),
             ],   Response::HTTP_OK);
         }
 
