@@ -26,6 +26,10 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
+    /** get product by id
+     * @param $product_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getProductByID($product_id)
     {
         $product = Products::select(
