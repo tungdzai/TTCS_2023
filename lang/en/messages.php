@@ -1,27 +1,29 @@
 <?php
 return [
     'errors' => [
-        'login' => 'Đăng nhập không thành công !',
-        'addUser' => "Thêm mới không thành công ! ",
-        'updateUser' => "Thêm mới không thành công ! ",
-        'deleteAjax'=>"Xóa không thành công !"
+        'login' => 'Login failed!',
+        'addUser' => "Add new failed!",
+        'updateUser' => "New failed! ",
+        'deleteAjax'=>"Delete failed !"
     ],
+
     'success' => [
-        'addUser' => "Thêm mới thành công",
-        'successUpdate' => 'Update thành công ',
-        'deleteUser' => 'Xóa thành công'
+        'addUser' => "New successfully added",
+        'successUpdate' => 'Update successful',
+        'deleteUser' => 'Delete successful'
     ],
+
     'messages' => [
-        'required' => ':attribute không được để trống ! ',
-        'min' => ':attribute tối thiểu :min kí tự !',
-        'max' => ':attribute tối đa :max kí tự ! ',
-        'unique' => ':attribute đã tồn tại trên hệ thống !',
-        'format'=>':attribute chưa đúng định dạng!',
-        'image'=>':attribute là file png , jpg ,jpeg !',
-        'integer'=>':attribute phải là số nguyên !',
-        'date'=>":attribute phải là ngày tháng năm !",
-        'after'=>":attribute phải lớn hơn thời gian hiện tại !",
-        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !"
+        'required' => ':attribute cannot be empty ! ',
+        'min' => ':attribute min :min characters !',
+        'max' => ':attribute max :max characters ! ',
+        'unique' => ':attribute already exists on the system!',
+        'format'=>':attribute is not in the correct format!',
+        'image'=>':attribute is a png , jpg ,jpeg !',
+        'integer'=>':attribute must be an integer !',
+        'date'=>":attribute must be date month year !",
+        'after'=>":attribute must be greater than current time !",
+        'alpha_num'=>":attribute contains only a-z, A-Z, 0-9 !"
 
     ],
     'attributes' => [
@@ -31,10 +33,10 @@ return [
         'last_name' => "Last Name",
         'birthday' => "Birthday",
         'avatar'=>'Avatar',
-        'province'=>"Tỉnh/Thành phố",
-        'district'=>'Quận/Huyện',
-        'commune'=>"Phường/Xã",
-        'address'=>"Địa chỉ ",
+        'province'=>"Province/City",
+        'district'=>'District/District',
+        'commune'=>"Ward/Commune",
+        'address'=>"Address",
     ],
 
     'attributesProduct' => [

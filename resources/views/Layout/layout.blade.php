@@ -17,6 +17,7 @@
     <!-- Custom styles for this template-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{{asset('admin_lte/css/sb-admin-2.min.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{asset('language/css/style.css')}}">
     <title>@yield("title")</title>
 </head>
 
@@ -85,5 +86,6 @@
 <script src="{{asset('assets/js/previewProduct.js')}}"></script>
 <script src="{{asset('admin_lte/js/previewAvatar.js')}}"></script>
 <script src="{{asset('assets/js/province_district_commune.js')}}"></script>
+<script src="{{asset('language/js/js.js')}}"></script>
 </body>
 </html>

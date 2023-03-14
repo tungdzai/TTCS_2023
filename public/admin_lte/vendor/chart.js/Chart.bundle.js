@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -16524,7 +16524,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // pick the locale from the array
-    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // try ['vi-au', 'vi-gb'] as 'vi-au', 'vi-gb', 'vi', as in move through the list trying each
     // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
     function chooseLocale(names) {
         var i = 0, j, next, locale, split;
@@ -18029,7 +18029,7 @@ var moment = createCommonjsModule(function (module, exports) {
     hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
 
     function toString () {
-        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+        return this.clone().locale('vi').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
     }
 
     function toISOString(keepOffset) {
@@ -18841,7 +18841,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
     }
 
-    getSetGlobalLocale('en', {
+    getSetGlobalLocale('vi', {
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
         ordinal : function (number) {
             var b = number % 10,
