@@ -39,32 +39,35 @@ class CustomersController extends Controller
      */
     public function purchase(Request $request)
     {
-        $product_ids = $request->input('product_ids');
-        // Tính tổng số tiền sản phẩm
-        $total = Products::whereIn('id', $product_ids)->sum('price');
+        DB::transaction(function () use ($request) {
+            $product_ids = $request->input('product_ids');
 
-        //Tạo đơn hàng.
-        $order = [
-            'customer_id' => Auth::guard('customer')->user()->id,
-            'quantity' => count($product_ids),
-            'total' => $total
-        ];
-        $orderId = Orders::insertGetId($order);
+            // Tính tổng số tiền sản phẩm
+            $total = Products::whereIn('id', $product_ids)->sum('price');
 
-        //Tạo chi tiết đơn hàng
-        $orderDetails = [];
-        foreach ($product_ids as $product_id) {
-            $product = Products::find($product_id);
-
-            $orderDetails[] = [
-                'order_id' => $orderId,
-                'product_id' => $product->id,
-                'quantity' => 1,
-                'price' => $product->price,
+            //Tạo đơn hàng.
+            $order = [
+                'customer_id' => Auth::guard('customer')->user()->id,
+                'quantity' => count($product_ids),
+                'total' => $total
             ];
-        }
+            $orderId = Orders::insertGetId($order);
 
-        Details::insert($orderDetails);
+            //Tạo chi tiết đơn hàng
+            $orderDetails = [];
+            $products = Products::whereIn('id', $product_ids)->get();
+            foreach ($products as $product) {
+                $orderDetails[] = [
+                    'order_id' => $orderId,
+                    'product_id' => $product->id,
+                    'quantity' => 1,
+                    'price' => $product->price,
+                ];
+            }
+
+            Details::insert($orderDetails);
+        });
+
         return response()->json([
             'msg' => "Mua thành công ",
         ]);
