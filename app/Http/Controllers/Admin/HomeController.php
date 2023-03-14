@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
+use App\Models\Orders;
+use App\Models\Products;
 use App\Models\Users;
 use App\Repositories\User\UserReponsitoryInterface;
 use Illuminate\Http\Request;
 use App\Jobs\SendMail;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Http\Requests\Admin\UpdateRequest;
+use League\Csv\Writer;
 
 class HomeController extends Controller
 {
@@ -25,6 +29,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $lastMonth = Carbon::now()->subMonth();
+
+        $totalAmount = Orders::whereYear('created_at', $lastMonth->year)
+            ->whereMonth('created_at', $lastMonth->month)
+            ->sum('total');
+        $totalProducts = Orders::whereYear('created_at', $lastMonth->year)
+            ->whereMonth('created_at', $lastMonth->month)
+            ->sum('quantity');
+        dd($totalAmount,$totalProducts);
         $model = $this->userRepository->paginateUser();
         $data["users"] = $model;
         return view('admin.users', $data);
