@@ -22,7 +22,18 @@ class CustomersController extends Controller
     public function updateCustomer(Request $request): \Illuminate\Http\JsonResponse
     {
         $customer = Auth::guard('customer')->user();
-        $customer->update($request->all());
+        $dataUpdate=[
+            'email'=>$request->input('email'),
+            'phone'=>$request->input('phone'),
+            'birthday'=>$request->input('birthday'),
+            'full_name'=>$request->input('full_name'),
+            'password'=>$request->input('password'),
+            'address'=>$request->input('address'),
+            'province_id'=>$request->input('province_id'),
+            'district_id'=>$request->input('district_id'),
+            'commune_id'=>$request->input('commune_id'),
+        ];
+        $customer->update($dataUpdate);
         return response()->json($customer);
     }
 
