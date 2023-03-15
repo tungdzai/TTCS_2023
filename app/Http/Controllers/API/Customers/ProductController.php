@@ -26,7 +26,6 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-
     /** Get product by ID
      * @param $product_id
      * @return \Illuminate\Http\JsonResponse
