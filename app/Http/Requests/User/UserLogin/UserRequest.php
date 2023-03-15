@@ -22,7 +22,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|exists:customers,email',
+            'email' => 'required|exists:users,email',
             'password' => 'required'
         ];
     }
@@ -45,6 +45,5 @@ class UserRequest extends FormRequest
     public function attributes(): array
     {
         return __('messages.attributesUserLogin');
-
     }
 }

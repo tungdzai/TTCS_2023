@@ -24,7 +24,8 @@ return [
         'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !",
         'before'=>":attribute phải lớn hơn 18 ! ",
         'avatarMax'=>":attribute max 3MB ",
-        'exists'=>":attribute không tồn tại !"
+        'exists'=>":attribute không tồn tại !",
+        'regex'=>":attribute chưa đúng định dạng"
 
     ],
     'attributes' => [
@@ -52,6 +53,10 @@ return [
     'attributesUserLogin'=>[
         'email'=>'Email',
         'password'=>"Password"
+    ],
+    'attributesCustomer'=>[
+        'phone'=>'Số điện thoại',
+        'password'=>"Mật khẩu"
     ]
 
 

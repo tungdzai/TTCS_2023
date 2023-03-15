@@ -12,7 +12,15 @@ class SearchUserController extends Controller
 
     public function __construct()
     {
-        $this->query = Users::select('id', 'email', 'user_name', 'birthday', 'first_name', 'last_name', 'flag_delete');
+        $this->query = Users::select(
+            'id',
+            'email',
+            'user_name',
+            'birthday',
+            'first_name',
+            'last_name',
+            'flag_delete'
+        );
     }
 
     /** handle search user

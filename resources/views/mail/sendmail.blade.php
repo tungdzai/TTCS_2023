@@ -9,5 +9,7 @@
 </head>
 <body>
 <h5>Đăng kí thành công tài khoản </h5>
+<p>Email:{{$user->email}}</p>
+<p>Password{{$user->password}}</p>
 </body>
 </html>

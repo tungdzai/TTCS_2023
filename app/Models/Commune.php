@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 /**Class Commune
  * @property string $name
  * @property integer $district_id
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commune extends Model
 {
     use HasFactory;
+
     public $table = 'commune';
-    protected $fillable = ['name','district_id'];
+    protected $fillable = ['name', 'district_id'];
 }

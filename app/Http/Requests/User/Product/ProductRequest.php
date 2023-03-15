@@ -50,7 +50,7 @@ class ProductRequest extends FormRequest
             'avatar.required' => __('messages.messages.required'),
             'avatar.image' => __('messages.messages.format'),
             'avatar.mimes' => __('messages.messages.image'),
-            'avatar.max' => ':attribute max 3MB ',
+            'avatar.max' => __('messages.messages.avatarMax'),
 
             'sku.required' => __('messages.messages.required'),
             'sku.unique' => __('messages.messages.unique'),
