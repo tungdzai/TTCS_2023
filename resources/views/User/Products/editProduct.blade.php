@@ -44,7 +44,7 @@
                 <select name="category_id" class="form-control"  id="productCategoryID" >
                     @foreach($categories as $category)
                         @if($category->id == $getProduct->category_id)
-                            <option>{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endif
                     @endforeach
                     @foreach($categories as $category)
@@ -63,7 +63,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <img id="preview" src="{{!empty($getProduct->avatar)?$getProduct->avatar:'#'}}" style="max-width: 200px; max-height: 200px">
+                <img id="preview" src="{{!empty($getProduct->avatar)?$getProduct->avatar:null}}" style="max-width: 200px; max-height: 200px" name="image_product">
             </div>
             <div class="mb-3">
                 <label for="avatar">Avatar</label>

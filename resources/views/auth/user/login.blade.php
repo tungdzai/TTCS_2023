@@ -9,13 +9,13 @@
     <meta name="author" content="">
 
     <!-- Custom fonts for this template-->
-    <link href="../admin_lte/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin_lte/vendor/fontawesome-free/css/all.min.css')}}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../admin_lte/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('admin_lte/css/sb-admin-2.min.css')}}">
     <title>Login</title>
 </head>
 
@@ -44,14 +44,17 @@
                                 <form class="user" method="post" action="{{route('user.postLogin')}}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                               id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address..." name="email"
-                                               value="{{old("email")}}">
+                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{old("email")}}">
+                                        @error("email")
+                                        <span style="color: red">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                        @error("password")
+                                        <span style="color: red">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <div class=" ">
@@ -80,15 +83,11 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="../admin_lte/vendor/jquery/jquery.min.js"></script>
-<script src="../admin_lte/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="{{asset('admin_lte/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('admin_lte/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Core plugin JavaScript-->
-<script src="../admin_lte/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+<script src="{{asset('admin_lte/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 <!-- Custom scripts for all pages-->
-<script src="../admin_lte/js/sb-admin-2.min.js"></script>
-
+<script src="{{asset('admin_lte/js/sb-admin-2.min.js')}}"></script>
 </body>
-
 </html>

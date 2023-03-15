@@ -88,7 +88,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <img src="{{$getUser->avatar}}" alt="">
+                <img id="preview" src="{{!empty($getUser->avatar)?$getUser->avatar:null}}" style="max-width: 200px; max-height: 200px">
             </div>
             <div class="mb-3">
                 <label for="avatar">Avatar</label>
