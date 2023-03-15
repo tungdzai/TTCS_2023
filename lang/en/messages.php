@@ -14,16 +14,19 @@ return [
     ],
 
     'messages' => [
-        'required' => ':attribute cannot be empty ! ',
-        'min' => ':attribute min :min characters !',
-        'max' => ':attribute max :max characters ! ',
-        'unique' => ':attribute already exists on the system!',
-        'format'=>':attribute is not in the correct format!',
-        'image'=>':attribute is a png , jpg ,jpeg !',
-        'integer'=>':attribute must be an integer !',
-        'date'=>":attribute must be date month year !",
-        'after'=>":attribute must be greater than current time !",
-        'alpha_num'=>":attribute contains only a-z, A-Z, 0-9 !"
+        'required' => ':attribute không được để trống ! ',
+        'min' => ':attribute tối thiểu :min kí tự !',
+        'max' => ':attribute tối đa :max kí tự ! ',
+        'unique' => ':attribute đã tồn tại trên hệ thống !',
+        'format'=>':attribute chưa đúng định dạng!',
+        'image'=>':attribute là file png , jpg ,jpeg !',
+        'integer'=>':attribute phải là số nguyên !',
+        'date'=>":attribute phải là ngày tháng năm !",
+        'after'=>":attribute phải lớn hơn thời gian hiện tại !",
+        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !",
+        'before'=>":attribute phải lớn hơn 18 ! ",
+        'avatarMax'=>":attribute max 3MB ",
+        'exists'=>":attribute không tồn tại !"
 
     ],
     'attributes' => [
@@ -33,10 +36,11 @@ return [
         'last_name' => "Last Name",
         'birthday' => "Birthday",
         'avatar'=>'Avatar',
-        'province'=>"Province/City",
-        'district'=>'District/District',
-        'commune'=>"Ward/Commune",
-        'address'=>"Address",
+        'province'=>"Tỉnh/Thành phố",
+        'district'=>'Quận/Huyện',
+        'commune'=>"Phường/Xã",
+        'address'=>"Địa chỉ ",
+
     ],
 
     'attributesProduct' => [
@@ -47,6 +51,10 @@ return [
         'sku' => "Sku",
         'category_id'=>'Category ID'
     ],
+    'attributesUserLogin'=>[
+        'email'=>'Email',
+        'password'=>"Password"
+    ]
 
 
 

@@ -54,11 +54,11 @@ class UpdateRequest extends FormRequest
             'last_name.max' => __('messages.messages.max'),
 
             'birthday.required' => __('messages.messages.required'),
-            'birthday.before' => ":attribute phải lớn hơn 18 ! ",
+            'birthday.before' => __('messages.messages.before'),
 
             'avatar.image' => __('messages.messages.format'),
             'avatar.mimes' => __('messages.messages.image'),
-            'avatar.max' => ':attribute max 3MB ',
+            'avatar.max' => __('messages.messages.avatarMax'),
 
             'province.required' => __('messages.messages.required'),
             'district.required' => __('messages.messages.required'),
