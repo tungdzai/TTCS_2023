@@ -25,8 +25,8 @@ class UserController extends Controller
         return view('auth.user.login');
     }
 
-    /** Handle loginUser
-     * @param Request $request
+    /**Handle loginUser
+     * @param UserRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postLogin(UserRequest $request)
