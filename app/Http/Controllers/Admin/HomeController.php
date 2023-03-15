@@ -29,15 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lastMonth = Carbon::now()->subMonth();
-
-        $totalAmount = Orders::whereYear('created_at', $lastMonth->year)
-            ->whereMonth('created_at', $lastMonth->month)
-            ->sum('total');
-        $totalProducts = Orders::whereYear('created_at', $lastMonth->year)
-            ->whereMonth('created_at', $lastMonth->month)
-            ->sum('quantity');
-        dd($totalAmount,$totalProducts);
         $model = $this->userRepository->paginateUser();
         $data["users"] = $model;
         return view('admin.users', $data);
