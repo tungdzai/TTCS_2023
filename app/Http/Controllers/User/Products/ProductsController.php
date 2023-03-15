@@ -104,8 +104,8 @@ class ProductsController extends Controller
         if ($request->hasFile('avatar')) {
             $file_name = $this->imageService->upload($request->avatar);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
-        }else{
-            $pathAvatar=session('image_product');
+        } else {
+            $pathAvatar = session('image_product');
         }
 
         $updateProduct = [

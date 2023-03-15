@@ -21,7 +21,10 @@ return [
         'integer'=>':attribute phải là số nguyên !',
         'date'=>":attribute phải là ngày tháng năm !",
         'after'=>":attribute phải lớn hơn thời gian hiện tại !",
-        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !"
+        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !",
+        'before'=>":attribute phải lớn hơn 18 ! ",
+        'avatarMax'=>":attribute max 3MB ",
+        'exists'=>":attribute không tồn tại !"
 
     ],
     'attributes' => [
@@ -35,6 +38,7 @@ return [
         'district'=>'Quận/Huyện',
         'commune'=>"Phường/Xã",
         'address'=>"Địa chỉ ",
+
     ],
 
     'attributesProduct' => [
@@ -45,6 +49,10 @@ return [
         'sku' => "Sku",
         'category_id'=>'Category ID'
     ],
+    'attributesUserLogin'=>[
+        'email'=>'Email',
+        'password'=>"Password"
+    ]
 
 
 
