@@ -105,14 +105,14 @@ class HomeController extends Controller
     public function postEdit(UpdateRequest $request)
     {
         $id = session('id');
-        $image_user=session('imageUser');
+        $image_user = session('imageUser');
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $file_name = $file->getClientOriginalName();
             $file->move(public_path('upload/user/avatar'), $file_name);
             $pathAvatar = '/upload/user/avatar/' . $file_name;
-        }else{
-            $pathAvatar=$image_user;
+        } else {
+            $pathAvatar = $image_user;
         }
         $dataUpdate = [
             'email' => $request->email,

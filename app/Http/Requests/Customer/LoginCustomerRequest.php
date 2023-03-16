@@ -35,11 +35,19 @@ class LoginCustomerRequest extends FormRequest
     public function messages()
     {
         return [
-            'phone.required' => 'Số điện thoại không được để trống !',
-            'phone.regex' => 'Số điện thoại chưa đúng định dạng !',
-            'phone.exists' => 'Số điện thoại chưa đăng kí !',
-            'password.required' => 'Mật khẩu không được để trống !',
+            'phone.required' =>__('messages.messages.required'),
+            'phone.regex' => __('messages.messages.regex'),
+            'phone.exists' => __('messages.messages.exists'),
+            'password.required' =>__('messages.messages.required'),
         ];
+    }
+    /** Get attributes
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return __('messages.attributesCustomer');
+
     }
 
     /**

@@ -33,8 +33,14 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'Name không được để trống !',
-            'name.max'=>'Name không được quá :max kí tự !',
+            'name.required'=>__('messages.messages.required'),
+            'name.max'=>__('messages.messages.max'),
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'name'
         ];
     }
 }

@@ -13,6 +13,16 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Product</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Order</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Order details</span></a>
+    </li>
 @endsection
 @section('content')
     <div class="container-fluid">

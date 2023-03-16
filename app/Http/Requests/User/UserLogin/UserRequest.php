@@ -33,9 +33,17 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'Email không được để trống !',
-            'email.exists' => 'Email chưa được đăng kí !',
-            'password.required' => 'Mật khẩu không được để trống !',
+            'email.required' => __('messages.messages.required'),
+            'email.exists' =>__('messages.messages.exists'),
+            'password.required' =>  __('messages.messages.required'),
         ];
+    }
+
+    /** Get attributes
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return __('messages.attributesUserLogin');
     }
 }
