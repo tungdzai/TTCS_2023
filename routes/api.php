@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login-customer', function (){
     return view('customer.login.loginCustomer');
 });
+
 Route::post('/login-customer',[AuthController::class,'login'])->name("postLoginCustomer");
 
 Route::prefix('auth/customer')->middleware('auth:customer')->name('customer.')->group(function () {

@@ -49,7 +49,7 @@ class ProductUpdateRequest extends FormRequest
             'expired_at.after' => __('messages.messages.after'),
 
             'avatar.image' => __('messages.messages.format'),
-            'avatar.max' => ':attribute max 3MB ',
+            'avatar.max' => __('messages.messages.avatarMax'),
 
             'sku.required' => __('messages.messages.required'),
             'sku.unique' => __('messages.messages.unique'),

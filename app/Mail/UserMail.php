@@ -17,7 +17,7 @@ class UserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    protected $user;
+    public $user;
 
     public function __construct($user)
     {
@@ -43,9 +43,6 @@ class UserMail extends Mailable
     {
         return new Content(
             view: 'mail.sendmail',
-            with: [
-                'user' => $this->user,
-            ]
         );
     }
 

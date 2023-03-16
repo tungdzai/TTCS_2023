@@ -45,6 +45,5 @@ class UserRequest extends FormRequest
     public function attributes(): array
     {
         return __('messages.attributesUserLogin');
-
     }
 }

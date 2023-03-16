@@ -22,7 +22,6 @@ class SendMail implements ShouldQueue
 
     public function __construct($email, $password)
     {
-//        $this->delay= now()->addMinute();
         $this->email = $email;
         $this->password = $password;
     }
