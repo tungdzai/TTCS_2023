@@ -13,6 +13,8 @@ class District extends Model
 {
     use HasFactory;
     public $table = 'district';
-    protected $fillable = ['name','province_id'];
-
+    protected $fillable = [
+        'name',
+        'province_id'
+    ];
 }
