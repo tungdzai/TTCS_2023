@@ -19,16 +19,15 @@ class AuthController extends Controller
 
     public function login(LoginCustomerRequest $request)
     {
-        $phone=$request->input('phone');
-        $password=$request->input("password");
+        $phone = $request->input('phone');
+        $password = $request->input("password");
         $customer = Customers::where('phone', $phone)->first();
-
-        if (! $customer || ! Hash::check($password, $customer->password)) {
+        if (!$customer || !Hash::check($password, $customer->password)) {
             return response()->json(
                 ['error' => trans('api.error.login')],
-                Response::HTTP_UNAUTHORIZED );
+                Response::HTTP_UNAUTHORIZED);
         } else {
-            $customer = Auth::guard('customer')->user();
+            $customer = Auth::guard('customer')->setUser($customer)->user();
             $token_customer = $customer->createToken('customer');
             $token = $token_customer->token;
             $token->save();
@@ -36,7 +35,7 @@ class AuthController extends Controller
                 'access_token' => $token_customer->accessToken,
                 'token_type' => 'Bearer',
                 'success' => trans('api.success.login'),
-            ],   Response::HTTP_OK);
+            ], Response::HTTP_OK);
         }
 
     }
