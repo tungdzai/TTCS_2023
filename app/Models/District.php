@@ -18,5 +18,4 @@ class District extends Model
         'name',
         'province_id'
     ];
-
 }

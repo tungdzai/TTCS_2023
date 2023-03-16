@@ -27,4 +27,6 @@ Route::prefix('auth/customer')->middleware('auth:customer')->name('customer.')->
     Route::put('/update',[CustomersController::class,'updateCustomer'])->name('customer.updateCustomer');
     Route::get('/product/all',[ProductController::class,'getProductAll'])->name('customer.getProductAll');
     Route::get('/product/{product_id}',[ProductController::class,'getProductByID'])->name('customer.getProductByID');
+
+    Route::post('/purchase',[CustomersController::class,'purchase'])->name('customer.purchase');
 });
