@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section("title")
-    Admin - Quản lý user
+    {{__('user.users.admin')}}
 @endsection
 @section('sidebarTitle')
     <li class="nav-item active">
@@ -14,7 +14,7 @@
           action="{{route('admin.search')}}">
         <div class="input-group">
             @csrf
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+            <input type="text" class="form-control bg-light border-0 small" placeholder="{{__('user.users.search')}}"
                    aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{session('titleSearch')}}">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
@@ -27,8 +27,10 @@
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->
-        <a href="{{route('admin.addUser')}}" class="btn btn-primary">Thêm User</a>
-
+        <div class="d-flex justify-content-between">
+            <a href="{{route('admin.addUser')}}" class="btn btn-primary">{{__('user.users.add_user')}}</a>
+            @include('Blocks.language')
+        </div>
         @if(session('successAdd'))
             <script>
                 Swal.fire({
@@ -78,10 +80,10 @@
                 <thead>
                 <tr class="text-center">
                     <th scope="col">STT</th>
-                    <th scope="col">User</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Birthday</th>
+                    <th scope="col">{{__('user.users.User')}}</th>
+                    <th scope="col">{{__('user.users.first_name')}}</th>
+                    <th scope="col">{{__('user.users.last_name')}}</th>
+                    <th scope="col">{{__('user.users.birthday')}}</th>
                     <th scope="col">Email</th>
                     <th scope="col">Flag Delete</th>
                     <th scope="col"></th>
