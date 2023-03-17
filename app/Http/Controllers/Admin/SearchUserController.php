@@ -40,6 +40,6 @@ class SearchUserController extends Controller
         session()->flash("titleSearch", $request->input("search"));
         $users = $this->query;
         $data["users"] = $users->paginate(15);
-        return view('Admin.users', $data);
+        return view('admin.users', $data);
     }
 }

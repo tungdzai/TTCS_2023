@@ -1,12 +1,12 @@
 <?php
 return [
     'users' => [
-        'User' => "User",
+        'user' => "user",
         'first_name' => "Name",
         'last_name' => "Last name",
         'birthday' => "Birthday",
         'add_user' => "Add user",
-        'admin' => "Admin",
+        'admin' => "admin",
         'search' => "Search ...",
         'language' => "Language",
         'province' => "Province/City:",

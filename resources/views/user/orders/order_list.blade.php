@@ -3,7 +3,7 @@
     User- Order List
 @endsection
 @section('sidebarTitle')
-    @include('User.blocks.slidebar')
+    @include('user.blocks.slidebar')
 @endsection
 @section('content')
     <div class="container-fluid">

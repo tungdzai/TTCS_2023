@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/** Class Orders
+/** Class orders
  * @property integer $customer_id
  * @property integer $quantity
  * @property integer $total

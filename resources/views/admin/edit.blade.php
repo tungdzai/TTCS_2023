@@ -14,7 +14,7 @@
         <!-- Page Heading -->
         <form action="{{route("admin.postEdit")}}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">{{__('user.users.User')}}</label>
+                <label for="exampleInputEmail1" class="form-label">{{__('user.users.user')}}</label>
                 <input type="text" class="form-control" name="user"
                        value="{{!empty($getUser->user_name)?$getUser->user_name:old('user')}}">
                 @error("user")

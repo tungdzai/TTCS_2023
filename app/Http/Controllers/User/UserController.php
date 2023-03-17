@@ -17,7 +17,7 @@ class UserController extends Controller
         $this->model = new Users();
     }
 
-    /** View Login User
+    /** View Login user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getLogin()

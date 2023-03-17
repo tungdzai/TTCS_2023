@@ -6,19 +6,20 @@
     <div class="titleDetail">Chi tiết đơn hàng # {{$details[0]->order_id}} </div>
 @endsection
 @section('sidebarTitle')
-    @include('User.blocks.slidebar')
+    @include('user.blocks.slidebar')
 @endsection
 @section('content')
     <div class="container-fluid">
         <h6>THÔNG TIN NGƯỜI NHẬN</h6>
-        <div class="infoWrap" >
-            <p class="full_name" style="font-weight:500">{{$details[0]->full_name_customer}}</p>
+        <div class="infoWrap">
+            <p class="full_name" style="font-weight:500">{{$customer[0]->full_name_customer}}</p>
             <div class="address">
-                Địa chỉ : {{$details[0]->address_customer}},{{$details[0]->commune_name}},{{$details[0]->district_name}},{{$details[0]->province_name}}.
+                Địa chỉ : {{$customer[0]->address_customer}},{{$customer[0]->commune_name}},{{$customer[0]->district_name}}
+                ,{{$customer[0]->province_name}}.
             </div>
-            <span class="phone">Điện thoại: {{$details[0]->phone_customer}}</span>
+            <span class="phone">Điện thoại: {{$customer[0]->phone_customer}}</span>
             <br>
-            <span class="phone">Email: {{$details[0]->email_customer}}</span>
+            <span class="phone">Email: {{$customer[0]->email_customer}}</span>
         </div>
         <table class="table">
             <thead>

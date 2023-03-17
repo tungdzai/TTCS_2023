@@ -58,6 +58,6 @@ class SearchController extends Controller
         session()->flash("titleSearch", $request->input("search"));
         $products = $this->query->get();
         $data['products'] = $products;
-        return view('user.Products.products', $data);
+        return view('user.products.products', $data);
     }
 }

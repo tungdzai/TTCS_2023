@@ -32,7 +32,7 @@ class ProductsController extends Controller
     {
         $model = $this->productRepository->paginateProduct();
         $data["products"] = $model;
-        return view('user.Products.products', $data);
+        return view('user.products.products', $data);
     }
 
     /** get view add product and get (id,name)->category
@@ -42,7 +42,7 @@ class ProductsController extends Controller
     {
         $categories = $this->categoryRepository->getAll();
         $data['categories'] = $categories;
-        return view("user.Products.addProduct", $data);
+        return view("user.products.addProduct", $data);
     }
 
     /** handle add product
@@ -88,7 +88,7 @@ class ProductsController extends Controller
                 $data['categories'] = $this->categoryRepository->getAll();
                 $request->session()->put('id', $id);
                 $request->session()->put('image_product', $this->productRepository->getProduct($id)->avatar);
-                return view('user.Products.editProduct', $data);
+                return view('user.products.editProduct', $data);
             }
         }
         return redirect()->route('user.product');

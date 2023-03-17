@@ -26,7 +26,7 @@ class CategoriesController extends Controller
     {
         $model = $this->categoryRepository->paginateCategory();
         $data["categories"] = $model;
-        return view('user.Categories.categories', $data);
+        return view('user.categories.categories', $data);
     }
 
     /** get view Category
@@ -36,7 +36,7 @@ class CategoriesController extends Controller
     {
         $model = $this->categoryRepository->getAll();
         $data['categories'] = $model;
-        return view("user.Categories.addCategory", $data);
+        return view("user.categories.addCategory", $data);
 
     }
 
@@ -84,7 +84,7 @@ class CategoriesController extends Controller
             $data['categories'] = $categories;
             $data['getCategory'] = $getCategory;
             $request->session()->put('id', $id);
-            return view('user.Categories.editCategory', $data);
+            return view('user.categories.editCategory', $data);
 
         }
         return redirect()->route('user.category');

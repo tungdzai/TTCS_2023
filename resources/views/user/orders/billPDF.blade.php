@@ -52,14 +52,14 @@
     <div class="Receiver">
         <div class="infoWrap">
             <span>To</span>
-            <p class="full_name" style="font-weight:500">{{$details[0]->full_name_customer}}</p>
+            <p class="full_name" style="font-weight:500">{{$customer[0]->full_name_customer}}</p>
             <div class="address">
-                Dia chi : {{$details[0]->address_customer}},{{$details[0]->commune_name}},{{$details[0]->district_name}}
-                ,{{$details[0]->province_name}}.
+                Dia chi : {{$customer[0]->address_customer}},{{$customer[0]->commune_name}},{{$customer[0]->district_name}}
+                ,{{$customer[0]->province_name}}.
             </div>
-            <span class="phone">Dienthoai: {{$details[0]->phone_customer}}</span>
+            <span class="phone">Dienthoai: {{$customer[0]->phone_customer}}</span>
             <br>
-            <span class="phone">Email: {{$details[0]->email_customer}}</span>
+            <span class="phone">Email: {{$customer[0]->email_customer}}</span>
         </div>
     </div>
 </div>

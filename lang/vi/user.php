@@ -2,7 +2,7 @@
 return [
 
     'users' => [
-        'User' => "Người dùng",
+        'user' => "Người dùng",
         'first_name' => "Tên",
         'last_name' => "Họ",
         'birthday' => "Năm sinh",

@@ -3,7 +3,7 @@
     User- Category
 @endsection
 @section('sidebarTitle')
-    @include('User.blocks.slidebar')
+    @include('user.blocks.slidebar')
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -61,11 +61,11 @@
                         <td>{{$category->parent_id}}</td>
                         <td>
                             <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i
-                                    class="fas fa-user-edit"></i></a>
+                                        class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
                             <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i
-                                    class="fas fa-user-times"></i></a>
+                                        class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach
