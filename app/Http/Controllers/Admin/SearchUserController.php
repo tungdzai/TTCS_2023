@@ -37,8 +37,9 @@ class SearchUserController extends Controller
                 ->orWhere('user_name', 'like', '%' . $keyword . '%')
                 ->orWhere('email', 'like', '%' . $keyword . '%');
         });
-        $users = $this->query->get();
-        $data["users"] = $users;
+        session()->flash("titleSearch", $request->input("search"));
+        $users = $this->query;
+        $data["users"] = $users->paginate(15);
         return view('Admin.users', $data);
     }
 }

@@ -10,7 +10,7 @@
     </li>
 @endsection
 @section('search')
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post"
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET"
           action="{{route('admin.search')}}">
         <div class="input-group">
             @csrf
@@ -118,6 +118,6 @@
                 </tbody>
             </table>
         </div>
-        {{--        {{$users->links()}}--}}
+        {{$users->links()}}
     </div>
 @endsection

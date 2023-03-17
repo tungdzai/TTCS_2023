@@ -63,7 +63,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="avatar">{{__('user.users.district')}}<</label>
+                <label for="avatar">{{__('user.users.district')}}</label>
                 <select name="district" id="district" class="form-control">
                     <option value="">--{{__('user.users.district')}}--</option>
                 </select>

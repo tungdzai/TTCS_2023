@@ -85,6 +85,9 @@
                 <label for="avatar">{{__('user.users.avatar')}}</label>
                 <input type="file" name="avatar" class="form-control-file " id="avatar"  onchange="previewImage()">
                 <img id="preview" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;">
+                @error("avatar")
+                <span style="color: red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">{{__('user.users.submit')}}</button>
             @csrf

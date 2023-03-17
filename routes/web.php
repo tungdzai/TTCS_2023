@@ -42,7 +42,8 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
     Route::get('/edit', [HomeController::class, 'getEdit'])->name('getEdit');
     Route::post('/edit', [HomeController::class, 'postEdit'])->name('postEdit');
     Route::get('/delete', [HomeController::class, 'deleteUser'])->name('deleteUser');
-    Route::post('/search', [SearchUserController::class, 'search'])->name("search");
+
+    Route::get('/search', [SearchUserController::class, 'search'])->name("search");
 
     Route::get('/provinces', [AccommodationController::class, 'getProvinces'])->name("getProvinces");
     Route::get('/districts/{province_id}', [AccommodationController::class, 'getDistricts']);
