@@ -63,10 +63,18 @@ class CustomersController extends Controller
     public function purchase(Request $request)
     {
         $product_ids = $request->input('product_ids');
+        // Lấy danh sách sản phẩm hết hàng
 
+        $outOfStockProducts = Products::whereIn('id', $product_ids)->where('stock', '=', 0)->get();
+        if ($outOfStockProducts->count() > 0){
+            return response()->json([
+                'msg' => trans('api.error.product'),
+            ]);
+        }
+        // Giảm số lượng sản phẩm
+        Products::whereIn('id', $product_ids)->where('stock', '>', 0)->decrement('stock');
         // Tính tổng số tiền sản phẩm
         $total = Products::whereIn('id', $product_ids)->sum('price');
-
         //Tạo đơn hàng.
         $order = [
             'customer_id' => Auth::guard('customer')->user()->id,
@@ -84,7 +92,7 @@ class CustomersController extends Controller
                 'product_id' => $product->id,
                 'quantity' => 1,
                 'price' => $product->price,
-                'status'=>"Đã thanh toán"
+                'status'=>"Đã mua hàng"
             ];
         }
 
