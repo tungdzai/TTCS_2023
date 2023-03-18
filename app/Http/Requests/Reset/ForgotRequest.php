@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\UserLogin;
+namespace App\Http\Requests\Reset;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class ForgotRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|exists:users,email',
-            'password' => 'required'
+            'email' => "required|email|exists:users,email"
         ];
     }
 
@@ -35,7 +34,6 @@ class UserRequest extends FormRequest
         return [
             'email.required' => __('messages.messages.required'),
             'email.exists' => __('messages.messages.exists'),
-            'password.required' => __('messages.messages.required'),
         ];
     }
 
@@ -44,6 +42,9 @@ class UserRequest extends FormRequest
      */
     public function attributes(): array
     {
-        return __('messages.attributesUserLogin');
+        return [
+            'email' => "Email"
+        ];
+
     }
 }
