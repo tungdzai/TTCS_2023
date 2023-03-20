@@ -28,16 +28,15 @@ class OrderController extends Controller
      */
     public function detail(Request $request, $order_id)
     {
-        $detail = Orders::select(
-            'orders.id as order_id',
+        $detail = Details::select(
+            'order_details.id as order_detail_id',
             'products.name as product_name',
             'products.avatar as product_avatar',
             'order_details.quantity as order_details_quantity',
             'order_details.price as order_details_price',
         )
-            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
             ->join('products', 'order_details.product_id', '=', 'products.id')
-            ->where('orders.id', $order_id)
+            ->where('order_details.order_id', $order_id)
             ->get();
 
         $customer = Customers::select(

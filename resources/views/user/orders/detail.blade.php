@@ -3,7 +3,7 @@
     User- Detail
 @endsection
 @section('search')
-    <div class="titleDetail">Chi tiết đơn hàng # {{$details[0]->order_id}} </div>
+    <div class="titleDetail">Chi tiết đơn hàng # {{$details[0]->order_detail_id}} </div>
 @endsection
 @section('sidebarTitle')
     @include('user.blocks.slidebar')
