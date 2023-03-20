@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class products
+ * Class Products
  * @property string $sku
  * @property string $name
  * @property integer $stock

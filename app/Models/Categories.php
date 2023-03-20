@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class categories
+ * Class Categories
  * @property string $name
  * @property integer $parent_id
  */

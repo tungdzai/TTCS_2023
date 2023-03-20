@@ -81,7 +81,7 @@ class HomeController extends Controller
         }
     }
 
-    /** View editUser and show DB user($id)
+    /** View editUser and show DB User($id)
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */

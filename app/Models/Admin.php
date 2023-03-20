@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 
-/** Class admin
+/** Class Admin
  * @property string $email
  * @property string $user_name
  * @property date $birthday

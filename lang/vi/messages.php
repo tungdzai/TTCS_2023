@@ -27,7 +27,7 @@ return [
 
     ],
     'attributes' => [
-        'user' => 'user',
+        'user' => 'User',
         'email' => "Email",
         'first_name' => "First Name",
         'last_name' => "Last Name",
