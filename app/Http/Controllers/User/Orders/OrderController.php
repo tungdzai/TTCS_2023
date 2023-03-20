@@ -53,7 +53,7 @@ class OrderController extends Controller
             ->join('district', 'district.id', '=', 'customers.district_id')
             ->join('commune', 'commune.id', '=', 'customers.commune_id')
             ->where('customers.id', Orders::find($order_id)->customer_id)
-            ->get();
+            ->first();
         $request->session()->put('detail', $detail);
         $request->session()->put('customer', $customer);
         $data['details'] = $detail;

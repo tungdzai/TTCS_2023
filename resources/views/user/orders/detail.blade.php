@@ -12,14 +12,14 @@
     <div class="container-fluid">
         <h6>THÔNG TIN NGƯỜI NHẬN</h6>
         <div class="infoWrap">
-            <p class="full_name" style="font-weight:500">{{$customer[0]->full_name_customer}}</p>
+            <p class="full_name" style="font-weight:500">{{$customer->full_name_customer}}</p>
             <div class="address">
-                Địa chỉ : {{$customer[0]->address_customer}},{{$customer[0]->commune_name}},{{$customer[0]->district_name}}
-                ,{{$customer[0]->province_name}}.
+                Địa chỉ : {{$customer->address_customer}},{{$customer->commune_name}},{{$customer->district_name}}
+                ,{{$customer->province_name}}.
             </div>
-            <span class="phone">Điện thoại: {{$customer[0]->phone_customer}}</span>
+            <span class="phone">Điện thoại: {{$customer->phone_customer}}</span>
             <br>
-            <span class="phone">Email: {{$customer[0]->email_customer}}</span>
+            <span class="phone">Email: {{$customer->email_customer}}</span>
         </div>
         <table class="table">
             <thead>
