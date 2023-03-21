@@ -2,11 +2,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <title> Forgot Password</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="{{asset('admin_lte/vendor/fontawesome-free/css/all.min.css')}}">
@@ -16,13 +19,12 @@
 
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{asset('admin_lte/css/sb-admin-2.min.css')}}">
-    <title>Login</title>
+
 </head>
 
 <body class="bg-gradient-primary">
 
 <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
@@ -32,43 +34,29 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
+                                    <p class="mb-4">We get it, stuff happens. Just enter your email address below
+                                        and we'll send you a link to reset your password!</p>
                                 </div>
-                                @if(session('error'))
-                                    <div class="alert alert-danger text-center">{{session('error')}}</div>
-                                @endif
-                                <form class="user" method="post" action="{{route('user.postLogin')}}">
+                                <form class="user" method="post" action="{{route('auth.handleForgot')}}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{old("email")}}">
+                                        <input type="email" class="form-control form-control-user"
+                                               id="exampleInputEmail" aria-describedby="emailHelp"
+                                               placeholder="Enter Email Address..." name="email" value="{{old("email")}}">
                                         @error("email")
                                         <span style="color: red">{{$message}}</span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password" name="password">
-                                        @error("password")
-                                        <span style="color: red">{{$message}}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <div class=" ">
-                                            <label></label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block"> Login</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block"> Reset Password</button>
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="{{route('auth.forgotPassword')}}">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="{{route('user.getRegister')}}">Create an Account!</a>
+                                    <a class="small" href="login.html">Already have an account? Login!</a>
                                 </div>
                             </div>
                         </div>
@@ -90,17 +78,37 @@
 <!-- Custom scripts for all pages-->
 <script src="{{asset('admin_lte/js/sb-admin-2.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </body>
-@if(session('successReset'))
+</html>
+@if(session('success'))
     <script>
         Swal.fire({
-            position: 'top',
-            icon: 'success',
-            title: '{{session('successReset')}}',
-            showConfirmButton: false,
-            timer: 2500
+            title: '{{ session('success') }}',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+    </script>
+
+@endif
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}',
         })
     </script>
 @endif
-</html>
+@if(session('error_time_out'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error_time_out') }}',
+        })
+    </script>
+@endif

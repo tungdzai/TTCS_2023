@@ -4,7 +4,7 @@ return [
         'login' => 'Đăng nhập không thành công !',
         'addUser' => "Thêm mới không thành công ! ",
         'updateUser' => "Thêm mới không thành công ! ",
-        'deleteAjax'=>"Xóa không thành công !"
+        'deleteAjax' => "Xóa không thành công !"
     ],
     'success' => [
         'addUser' => "Thêm mới thành công",
@@ -16,14 +16,15 @@ return [
         'min' => ':attribute tối thiểu :min kí tự !',
         'max' => ':attribute tối đa :max kí tự ! ',
         'unique' => ':attribute đã tồn tại trên hệ thống !',
-        'format'=>':attribute chưa đúng định dạng!',
-        'image'=>':attribute là file png , jpg ,jpeg !',
-        'integer'=>':attribute phải là số nguyên !',
-        'date'=>":attribute phải là ngày tháng năm !",
-        'after'=>":attribute phải lớn hơn thời gian hiện tại !",
-        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !",
-        'regex'=>":attribute chưa đúng định dạng !",
-        'exists'=>":attribute không tồi tại trên hệ thống !"
+        'format' => ':attribute chưa đúng định dạng!',
+        'image' => ':attribute là file png , jpg ,jpeg !',
+        'integer' => ':attribute phải là số nguyên !',
+        'date' => ":attribute phải là ngày tháng năm !",
+        'after' => ":attribute phải lớn hơn thời gian hiện tại !",
+        'alpha_num' => ":attribute chỉ chứa a-z, A-Z, 0-9 !",
+        'regex' => ":attribute chưa đúng định dạng !",
+        'exists' => ":attribute không tồi tại trên hệ thống !",
+        'confirmed' => ":attribute không trùng khớp !"
 
     ],
     'attributes' => [
@@ -32,11 +33,11 @@ return [
         'first_name' => "First Name",
         'last_name' => "Last Name",
         'birthday' => "Birthday",
-        'avatar'=>'Avatar',
-        'province'=>"Tỉnh/Thành phố",
-        'district'=>'Quận/Huyện',
-        'commune'=>"Phường/Xã",
-        'address'=>"Địa chỉ ",
+        'avatar' => 'Avatar',
+        'province' => "Tỉnh/Thành phố",
+        'district' => 'Quận/Huyện',
+        'commune' => "Phường/Xã",
+        'address' => "Địa chỉ ",
     ],
 
     'attributesProduct' => [
@@ -45,17 +46,16 @@ return [
         'expired_at' => "Expired at",
         'avatar' => "Avatar",
         'sku' => "Sku",
-        'category_id'=>'Category ID'
+        'category_id' => 'Category ID'
     ],
-    'attributesUserLogin'=>[
-        'email'=>"Email",
-        'password'=>"Password"
+    'attributesUserLogin' => [
+        'email' => "Email",
+        'password' => "Password"
     ],
-    'attributesCustomer'=>[
-        'phone'=>"Số điện thoại",
-        'password'=>"Mật khẩu"
+    'attributesCustomer' => [
+        'phone' => "Số điện thoại",
+        'password' => "Mật khẩu"
     ]
-
 
 
 ];

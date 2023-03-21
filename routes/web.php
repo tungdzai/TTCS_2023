@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\SendMailController;
 use App\Http\Controllers\Admin\AccommodationController;
 use App\Http\Controllers\Language\LanguageController;
 use App\Http\Controllers\User\Orders\OrderController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 
 /*
@@ -50,7 +52,7 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
     Route::get('/districts/{province_id}', [AccommodationController::class, 'getDistricts']);
     Route::get('/communes/{district_id}', [AccommodationController::class, 'getCommunes']);
 
-    Route::get('language/{locale}',[LanguageController::class,'index'])->name('language');
+    Route::get('language/{locale}', [LanguageController::class, 'index'])->name('language');
 
 });
 
@@ -80,8 +82,8 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
 
     Route::post('/search', [SearchController::class, 'search'])->name("search");
 
-    Route::get('order',[OrderController::class,'getAllOrder'])->name('getAllOrder');
-    Route::get('detail/{id}',[OrderController::class,'detail'])->name('getDetail');
+    Route::get('order', [OrderController::class, 'getAllOrder'])->name('getAllOrder');
+    Route::get('detail/{id}', [OrderController::class, 'detail'])->name('getDetail');
     Route::get("/billPDF", [OrderController::class, 'billPDF'])->name("billPDF");
 
 });
@@ -91,4 +93,11 @@ Route::prefix('/download')->name("download.")->group(function () {
     Route::get("/PDF", [DownloadController::class, 'downloadPDF'])->name("PDF");
 });
 
+Route::prefix('auth')->name('auth.')->group(function (){
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgotPassword');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'handleForgot'])->name('handleForgot');
+
+    Route::get('reset-password/{token}', [ResetPasswordController::class,'showResetForm'])->name('reset');
+    Route::post('reset-password', [ResetPasswordController::class,'handleResetForm'])->name('update');
+});
 

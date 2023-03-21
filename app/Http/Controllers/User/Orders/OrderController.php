@@ -67,7 +67,7 @@ class OrderController extends Controller
     {
         $details = session('detail');
         $customer = session('customer');
-        if (!$details->isEmpty() && !$details->isEmpty() ) {
+        if (!$details->isEmpty() && !$details->isEmpty()) {
             $data['details'] = $details;
             $data['customer'] = $customer;
             $pdf = app(PDF::class);
