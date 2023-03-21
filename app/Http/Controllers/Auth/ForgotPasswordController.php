@@ -7,7 +7,7 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use App\Models\Password_resets;
+use App\Models\PasswordResets;
 use Illuminate\Support\Carbon;
 use App\Mail\ResetPassMail;
 use App\Http\Requests\Reset\ForgotRequest;
@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
         // Tạo token
         $token = Str::random(60);
 
-        Password_resets::insert([
+        PasswordResets::insert([
             'email' => $email,
             'token' => $token,
             'created_at' => Carbon::now(),

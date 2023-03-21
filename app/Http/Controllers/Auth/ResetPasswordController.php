@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Password_resets;
+use App\Models\PasswordResets;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -19,12 +19,12 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm($token)
     {
-        $passwordReset = Password_resets::where('token', $token)->first();
+        $passwordReset = PasswordResets::where('token', $token)->first();
         if (!$passwordReset) {
             return redirect()->route('auth.forgotPassword')->with('error', __('resetpassword.errors.token'));
         }
         if (Carbon::parse($passwordReset->created_at)->addMinutes(180)->isPast()) {
-            Password_resets::where('token', $token)->delete();
+            PasswordResets::where('token', $token)->delete();
             return redirect()->route('auth.forgotPassword')->with('error_time_out', __('resetpassword.errors.time_out'));
         }
         return view('auth.user.reset_pass', [
@@ -39,7 +39,7 @@ class ResetPasswordController extends Controller
     public function handleResetForm(ResetPassRequest $request)
     {
 
-        $passwordReset = Password_resets::where('token', $request->input('token'))->first();
+        $passwordReset = PasswordResets::where('token', $request->input('token'))->first();
         if (!$passwordReset) {
             return redirect()->route('auth.forgotPassword')->with('error', __('resetpassword.errors.token'));
         }
@@ -49,7 +49,7 @@ class ResetPasswordController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         if ($statusUpdate) {
-            Password_resets::where('email', $email)->delete();
+            PasswordResets::where('email', $email)->delete();
             return redirect()->route('user.getLogin')->with('successReset', __('resetpassword.success.resetPass'));
         }
     }
