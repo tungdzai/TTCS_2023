@@ -3,26 +3,7 @@
     User- Category
 @endsection
 @section('sidebarTitle')
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('user.category')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Category</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('user.product')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Product</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Order</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Order details</span></a>
-    </li>
+    @include('user.blocks.slidebar')
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -80,11 +61,11 @@
                         <td>{{$category->parent_id}}</td>
                         <td>
                             <a href="{{route('user.getEditCategory',['id'=>$category->id])}}"><i
-                                    class="fas fa-user-edit"></i></a>
+                                        class="fas fa-user-edit"></i></a>
                         </td>
                         <td>
                             <a href="{{route('user.deleteCategory',['id'=>$category->id])}}"><i
-                                    class="fas fa-user-times"></i></a>
+                                        class="fas fa-user-times"></i></a>
                         </td>
                     </tr>
                 @endforeach

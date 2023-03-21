@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SearchUserController;
 use App\Http\Controllers\Admin\SendMailController;
 use App\Http\Controllers\Admin\AccommodationController;
 use App\Http\Controllers\Language\LanguageController;
+use App\Http\Controllers\User\Orders\OrderController;
 
 
 /*
@@ -42,7 +43,8 @@ Route::prefix("/admin/user")->middleware("auth:admin")->name("admin.")->group(fu
     Route::get('/edit', [HomeController::class, 'getEdit'])->name('getEdit');
     Route::post('/edit', [HomeController::class, 'postEdit'])->name('postEdit');
     Route::get('/delete', [HomeController::class, 'deleteUser'])->name('deleteUser');
-    Route::post('/search', [SearchUserController::class, 'search'])->name("search");
+
+    Route::get('/search', [SearchUserController::class, 'search'])->name("search");
 
     Route::get('/provinces', [AccommodationController::class, 'getProvinces'])->name("getProvinces");
     Route::get('/districts/{province_id}', [AccommodationController::class, 'getDistricts']);
@@ -60,7 +62,7 @@ Route::prefix('/')->name('user.')->group(function () {
 });
 
 
-//Route Category
+//Route Category Product Order
 Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function () {
     Route::get('/category', [CategoriesController::class, 'index'])->name('category');
     Route::get('/add-category', [CategoriesController::class, 'addCategory'])->name('addCategory');
@@ -77,6 +79,10 @@ Route::prefix('user/')->middleware('auth:user')->name('user.')->group(function (
     Route::get("/delete-product/{id}", [ProductsController::class, 'deleteProduct'])->name("deleteProduct");
 
     Route::post('/search', [SearchController::class, 'search'])->name("search");
+
+    Route::get('order',[OrderController::class,'getAllOrder'])->name('getAllOrder');
+    Route::get('detail/{id}',[OrderController::class,'detail'])->name('getDetail');
+    Route::get("/billPDF", [OrderController::class, 'billPDF'])->name("billPDF");
 
 });
 // Download

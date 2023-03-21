@@ -1,7 +1,7 @@
 <?php
 return [
     'users' => [
-        'User' => "User",
+        'user' => "User",
         'first_name' => "Name",
         'last_name' => "Last name",
         'birthday' => "Birthday",

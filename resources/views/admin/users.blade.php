@@ -10,7 +10,7 @@
     </li>
 @endsection
 @section('search')
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post"
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET"
           action="{{route('admin.search')}}">
         <div class="input-group">
             @csrf
@@ -29,7 +29,7 @@
         <!-- Page Heading -->
         <div class="d-flex justify-content-between">
             <a href="{{route('admin.addUser')}}" class="btn btn-primary">{{__('user.users.add_user')}}</a>
-            @include('Blocks.language')
+            @include('blocks.language')
         </div>
         @if(session('successAdd'))
             <script>
@@ -80,7 +80,7 @@
                 <thead>
                 <tr class="text-center">
                     <th scope="col">STT</th>
-                    <th scope="col">{{__('user.users.User')}}</th>
+                    <th scope="col">{{__('user.users.user')}}</th>
                     <th scope="col">{{__('user.users.first_name')}}</th>
                     <th scope="col">{{__('user.users.last_name')}}</th>
                     <th scope="col">{{__('user.users.birthday')}}</th>
@@ -110,7 +110,7 @@
                             </td>
                             <td>
                                 <a href="{{route('admin.deleteUser',['id'=>$user->id])}}"><i
-                                        class="fas fa-user-times"></i></a>
+                                            class="fas fa-user-times"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -118,6 +118,6 @@
                 </tbody>
             </table>
         </div>
-        {{--        {{$users->links()}}--}}
+        {{$users->links()}}
     </div>
 @endsection

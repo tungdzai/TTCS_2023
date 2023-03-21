@@ -43,7 +43,7 @@ class UserReponsitory implements UserReponsitoryInterface
         return Users::where("id", $id)->update($data);
     }
 
-    /** Handle Delete User
+    /** Handle Delete user
      * @param $id
      * @return int
      */

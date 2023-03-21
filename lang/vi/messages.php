@@ -21,7 +21,9 @@ return [
         'integer'=>':attribute phải là số nguyên !',
         'date'=>":attribute phải là ngày tháng năm !",
         'after'=>":attribute phải lớn hơn thời gian hiện tại !",
-        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !"
+        'alpha_num'=>":attribute chỉ chứa a-z, A-Z, 0-9 !",
+        'regex'=>":attribute chưa đúng định dạng !",
+        'exists'=>":attribute không tồi tại trên hệ thống !"
 
     ],
     'attributes' => [
@@ -45,6 +47,14 @@ return [
         'sku' => "Sku",
         'category_id'=>'Category ID'
     ],
+    'attributesUserLogin'=>[
+        'email'=>"Email",
+        'password'=>"Password"
+    ],
+    'attributesCustomer'=>[
+        'phone'=>"Số điện thoại",
+        'password'=>"Mật khẩu"
+    ]
 
 
 

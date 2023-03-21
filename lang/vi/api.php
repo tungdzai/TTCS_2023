@@ -2,7 +2,8 @@
 return [
     'error'=>[
         'login'=>'Số điện thoại hoặc mật khẩu không chính xác !',
-        'update'=>'Cập nhật không thành công'
+        'update'=>'Cập nhật không thành công',
+        'product'=>"Sản phẩm tạm hết hàng !"
 
     ],
     'success'=>[

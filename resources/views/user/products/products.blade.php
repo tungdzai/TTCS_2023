@@ -3,26 +3,7 @@
     User- Product
 @endsection
 @section('sidebarTitle')
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('user.category')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Category</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('user.product')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Product</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Order</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Order details</span></a>
-    </li>
+    @include('user.blocks.slidebar')
 @endsection
 @section('search')
     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post"
@@ -30,7 +11,7 @@
         <div class="input-group">
             @csrf
             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                   aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{session('titleSearch')}}" >
+                   aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{session('titleSearch')}}">
             <select name="stock" id="stock" class="bg-light border-0 small">
                 <option value="">All</option>
                 <option value="less_than_10">10</option>
@@ -126,12 +107,12 @@
                             <td>{{$product->expired_at}}</td>
                             <td>
                                 <a href="{{route('user.getEditProduct',['id'=>$product->id])}}"><i
-                                        class="fas fa-user-edit"></i></a>
+                                            class="fas fa-user-edit"></i></a>
                             </td>
                             <td>
                                 <button class="deleteProduct" data-id="{{$product->id}}"
                                         style="border: none;background-color: #ffffff ;color: red"><i
-                                        class="fas fa-user-times"></i></button>
+                                            class="fas fa-user-times"></i></button>
                             </td>
                         </tr>
                     @endforeach

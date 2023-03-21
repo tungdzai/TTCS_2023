@@ -29,7 +29,7 @@ class DownloadController extends Controller
             session()->flash("errorDownload", "Không có sản phẩm nào !");
         }
         $pdf = app(PDF::class);
-        $pdf->loadView('user.Products.products-pdf', compact('products'));
+        $pdf->loadView('user.products.products-pdf', compact('products'));
         return $pdf->stream('danh_sach_san_pham.pdf');
     }
 
