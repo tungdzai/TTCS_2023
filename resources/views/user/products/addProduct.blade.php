@@ -10,21 +10,21 @@
         <!-- Page Heading -->
         <form action="{{route('user.handleAddProduct')}}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <label for="exampleInputEmail1" class="form-label">NAME</label>
                 <input type="text" class="form-control" name="name" value="{{old('name')}}" id="productName">
                 @error("name")
                 <span style="color: red">{{$message}}</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Stock</label>
+                <label for="exampleInputEmail1" class="form-label">STOCK</label>
                 <input type="number" class="form-control" name="stock" value="{{old('stock')}}" id="productStock">
                 @error("stock")
                 <span style="color: red">{{$message}}</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Sku</label>
+                <label for="exampleInputEmail1" class="form-label">SKU</label>
                 <input type="text" class="form-control" name="sku" value="{{old('sku')}}" minlength="10"
                        maxlength="20" placeholder="a-z, A-Z, 0-9" pattern="[a-zA-Z0-9]{10,20}" id="productSku">
                 @error("sku")
@@ -32,7 +32,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Category ID</label>
+                <label for="exampleInputPassword1" class="form-label">CATEGORY ID</label>
                 <select name="category_id" class="form-control" id="productCategoryID">
                     <option></option>
                     @foreach($categories as $category)
@@ -44,7 +44,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Expired at</label>
+                <label for="exampleInputEmail1" class="form-label">EXPIRED AT</label>
                 <input type="date" class="form-control" name="expired_at" value="{{old('expired_at')}}"
                        id="productExpired">
                 @error("expired_at")
@@ -52,7 +52,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="avatar">Avatar</label>
+                <label for="avatar">AVATAR</label>
                 <input type="file" name="avatar" class="form-control-file " id="avatar" onchange="previewImage()">
                 <img id="preview" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;">
                 @error("avatar")

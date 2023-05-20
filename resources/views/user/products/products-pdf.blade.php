@@ -25,7 +25,6 @@
     </style>
 </head>
 <body>
-// View form PDF
 <h1>Danh sách sản phẩm</h1>
 <p>Ngày tháng năm: {{date('d-m-Y')}}</p>
 <table>

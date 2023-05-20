@@ -55,7 +55,6 @@ return [
     'attributesCustomer' => [
         'phone' => "Số điện thoại",
         'password' => "Mật khẩu"
-    ]
-
+    ],
 
 ];

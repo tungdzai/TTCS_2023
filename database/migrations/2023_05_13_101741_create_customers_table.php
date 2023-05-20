@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,8 +14,8 @@ return new class extends Migration
             $table->id();
             $table->string('email')->nullable()->unique();
             $table->string('phone', 11)->unique();
-            $table->date('birthday');
-            $table->string('full_name');
+            $table->date('birthday')->nullable();
+            $table->string('full_name')->nullable();
             $table->string('password');
             $table->string('reset_password')->nullable();
             $table->string('address')->nullable();
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->integer('commune_id')->nullable();
             $table->string('status');
             $table->boolean('flag_delete')->default(false);
-
             $table->timestamps();
         });
     }

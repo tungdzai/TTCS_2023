@@ -7,7 +7,10 @@ return [
 
     ],
     'success' => [
-        'login' => 'Đăng nhập thành công'
+        'login' => 'Đăng nhập thành công',
+        'register' => 'Đăng kí thành công',
+        'update' => 'Cập nhật thông tin thành công  ',
+        'logout' => "Đăng xuất thành công"
     ],
     'product' => [
         'not_exist' => "Sản phẩm không tồn tại !",

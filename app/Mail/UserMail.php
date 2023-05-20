@@ -17,14 +17,12 @@ class UserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $user;
-
-    public function __construct($user)
+    public $email,$password;
+    public function __construct($email,$password)
     {
-        $this->user = $user;
-
+        $this->email = $email;
+        $this->password = $password;
     }
-
     /**
      * Get the message envelope.
      */

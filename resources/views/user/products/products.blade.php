@@ -100,7 +100,7 @@
                     @foreach($products as $index =>$product)
                         <tr class=" text-center">
                             <td>{{$index+1}}</td>
-                            <td>{{$product->name}}</td>
+                            <td class="text-left">{{$product->name}}</td>
                             <td>{{$product->stock}}</td>
                             <td>{{$product->sku}}</td>
                             <td>{{$product->category_id}}</td>

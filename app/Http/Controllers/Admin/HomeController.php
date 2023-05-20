@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     }
 
-    /**  View adUser
+    /**  View add User
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getAdd()
@@ -71,6 +71,7 @@ class HomeController extends Controller
 
         ];
         $status = $this->userRepository->addUser($dataUser);
+//        dd($request->email,$password);
         if ($status) {
             SendMail::dispatch($request->email, $password);
             session()->flash('successAdd', __('messages.success.addUser'));

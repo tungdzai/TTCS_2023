@@ -31,6 +31,7 @@ class UserController extends Controller
      */
     public function postLogin(UserRequest $request)
     {
+//        dd($request->input());
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
             $request->session()->regenerate();

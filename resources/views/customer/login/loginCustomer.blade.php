@@ -1,60 +1,34 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('customer/css/customer.scss')}}">
-    <title>Customer</title>
-</head>
-<body>
-<div class="materialContainer">
-    <form action="{{route('postLoginCustomer')}}" method="post">
-        <div class="box">
-            <div class="title">LOGIN</div>
-            <div class="input">
-                <label for="name">Phone</label>
-                <input type="text" name="phone" id="name">
+@extends('customer.layout.layoutCustomer')
+@section('title','Login')
+@section('login')
+    <div class="login">
+        <div class="container justify-content-center">
+            <div class="login-form">
+                <form action="{{route('postLoginCustomer')}}" method="POST" id="login-form">
+                    {!! csrf_field() !!}
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <label>Phone</label>
+                            <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone">
+                            <span id="phone-error" class="error"></span>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label>Password</label>
+                            <input class="form-control" id="password" name="password" type="text" placeholder="Password">
+                            <span id="password-error" class="error"></span>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <a href="#">Quên mật khẩu ?</a>
+                        </div>
+                        <div class="col-12 mb-2 text-center">
+                            <button id="login-btn" class="btn" type="submit">Sign in</button>
+                        </div>
+                        <div class="col-12 mt-5 text-center">
+                            <a href="#">Sign up for account ?</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="input">
-                <label for="pass">Password</label>
-                <input type="password" name="password" id="pass">
-                <span class="spin"></span>
-            </div>
-            <div class="button login">
-                <button><span>GO</span> <i class="fa fa-check"></i></button>
-            </div>
-            <a href="" class="pass-forgot">Forgot your password?</a>
-        </div>
-        @csrf
-    </form>
-
-    <div class="overbox">
-        <div class="material-button alt-2"><span class="shape"></span></div>
-        <div class="title">REGISTER</div>
-        <div class="input">
-            <label for="regname">Username</label>
-            <input type="text" name="regname" id="regname">
-            <span class="spin"></span>
-        </div>
-        <div class="input">
-            <label for="regpass">Password</label>
-            <input type="password" name="regpass" id="regpass">
-            <span class="spin"></span>
-        </div>
-        <div class="input">
-            <label for="reregpass">Repeat Password</label>
-            <input type="password" name="reregpass" id="reregpass">
-            <span class="spin"></span>
-        </div>
-        <div class="button">
-            <button><span>NEXT</span></button>
         </div>
     </div>
-
-</div>
-</body>
-</html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="../../customer/js/customer.js"></script>
+@endsection
